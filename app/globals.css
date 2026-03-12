@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  
+  /* 🍜 NODLEFAMILY IDENTITY COLORS */
+  --color-primary-red: #b22222;
+  --color-primary-dark: #8b0000;
+  --color-noodle-gold: #ffcc00;
+  --color-warm-cream: #fff5e6;
+  --color-dark-text: #332211;
+  --color-light-text: #665544;
+
+  /* SHADOWS & RADIUS */
+  --radius-lg: 30px;
+  --radius-md: 15px;
+  --shadow-warm: 0 10px 25px rgba(178, 34, 34, 0.08);
+}
+
+@layer base {
+  body {
+    @apply bg-warm-cream text-dark-text font-sans antialiased;
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight text-primary-dark;
+  }
+}
+
+@layer components {
+  .container-stable {
+    @apply w-full max-w-7xl mx-auto px-6;
+  }
+  
+  .section-warmth {
+    @apply bg-white rounded-lg p-10 my-10 shadow-warm border-b-6 border-noodle-gold relative overflow-hidden;
+  }
+}
+
+/* CUSTOM ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}

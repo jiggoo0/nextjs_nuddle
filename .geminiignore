@@ -1,0 +1,55 @@
+# --- 🚀 AEMZA MASTER IGNORE (TOKEN OPTIMIZED) ---
+node_modules/
+.pnpm-store/
+.next/
+.cache/
+dist/
+build/
+out/
+*.log
+*.tmp
+*.bak
+*.swp
+
+# --- Binary & Media (AI อ่านไม่ได้ ไม่ต้องส่งไป) ---
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.pdf
+*.woff
+*.woff2
+*.ttf
+*.eot
+*.mp4
+*.webm
+*.zip
+*.tar.gz
+*.rar
+
+# --- Tooling & Lock Files (ประหยัด Tokens มหาศาล) ---
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+tsconfig.tsbuildinfo
+.eslintcache
+.stylelintcache
+*.map
+
+# --- Hidden Files & Git ---
+.git/
+.gitignore
+.gitattributes
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+
+# --- Project Specific Noise ---
+structure.txt
+PROJECTS_OVERVIEW.md
+ANALYSIS_*.md
+archive_*.zip

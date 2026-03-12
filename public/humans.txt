@@ -1,0 +1,20 @@
+/* TEAM */
+  Main Developer: Alogkorn Yomkerd (AEMZA MAX)
+  Website: https://www.me.aemdevweb.com
+  Company: AEMDEVWEB
+  URL: https://www.aemdevweb.com
+  From: Thailand
+
+/* THANKS */
+  Project: Nodlefamily
+  Role: Software Architect & Developer
+
+/* SITE */
+  Last update: 2026/03/13
+  Standards: HTML5, CSS3, Next.js 16, React 19, Tailwind CSS 4
+  Components: Shadcn UI, Framer Motion
+  Analytics: Vercel Analytics
+
+/* TECHNOLOGY */
+  Developed using Advanced Gemini CLI Assistant (Managed 99% by AI System)
+  License: Developed and Managed by AEMDEVWEB
