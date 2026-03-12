@@ -4,7 +4,7 @@ Allow: /images/
 Allow: /api/
 
 # Sitemaps
-Sitemap: https://sahachai.aemdevweb.com/sitemap.xml
+Sitemap: https://sahachai-noodle.aemdevweb.com/sitemap.xml
 
 # Bots to allow for SEO & AI
 User-agent: Googlebot

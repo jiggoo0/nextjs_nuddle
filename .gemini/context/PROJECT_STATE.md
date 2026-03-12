@@ -1,4 +1,4 @@
-# 🏁 NODLEFAMILY PROJECT STATE
+# 🏁 nextjs_nuddle PROJECT STATE
 
 > **Phase:** Migration (Static HTML to Next.js 16)
 > **Goal:** Transform the noodle shop business website "ช.สหชัย เกี๊ยวปูหมูแดง" into a modern React application.

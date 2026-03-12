@@ -5,11 +5,13 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { siteConfig } from "@/constants/site-config";
+
 const navLinks = [
-  { href: "#protocols", label: "Protocols" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#contact", label: "Contact" },
+  { href: "#protocols", label: "เรื่องราว" },
+  { href: "#portfolio", label: "เมนู" },
+  { href: "#pricing", label: "ราคาสินค้า" },
+  { href: "#contact", label: "ติดต่อเรา" },
 ];
 
 export function Navigation() {
@@ -33,33 +35,33 @@ export function Navigation() {
           <Link href="/" className="flex items-center gap-2 group">
             <div className="w-8 h-8 rounded-md bg-primary/20 border border-primary/40 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
               <span className="text-primary font-bold text-sm font-mono">
-                U
+                ช
               </span>
             </div>
             <span className="text-foreground font-bold text-lg tracking-tight">
-              Unlink-th
+              ช.สหชัย
             </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
+            {siteConfig.navigation.map((link) => (
+              <Link
                 key={link.href}
                 href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium tracking-wide uppercase"
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium tracking-wide"
               >
-                {link.label}
-              </a>
+                {link.title}
+              </Link>
             ))}
           </div>
 
           <div className="flex items-center gap-3">
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               className="hidden sm:inline-flex glow-border items-center gap-2 bg-primary/10 hover:bg-primary/20 text-primary px-5 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300"
             >
-              Get Started
-            </a>
+              สั่งอาหาร
+            </Link>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -90,27 +92,30 @@ export function Navigation() {
               className="fixed top-20 right-0 bottom-0 w-72 glass md:hidden"
             >
               <div className="flex flex-col p-8 gap-6">
-                {navLinks.map((link, index) => (
-                  <motion.a
+                {siteConfig.navigation.map((link, index) => (
+                  <motion.div
                     key={link.href}
-                    href={link.href}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium tracking-wide uppercase"
-                    onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {link.label}
-                  </motion.a>
+                    <Link
+                      href={link.href}
+                      className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium tracking-wide block"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.title}
+                    </Link>
+                  </motion.div>
                 ))}
                 <div className="border-t border-border pt-6">
-                  <a
-                    href="#contact"
+                  <Link
+                    href="/#contact"
                     className="glow-border block text-center bg-primary/10 hover:bg-primary/20 text-primary px-5 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Get Started
-                  </a>
+                    สั่งอาหาร
+                  </Link>
                 </div>
               </div>
             </motion.div>

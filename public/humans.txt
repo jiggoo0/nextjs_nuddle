@@ -6,7 +6,7 @@
   From: Thailand
 
 /* THANKS */
-  Project: Nodlefamily
+  Project: nextjs_nuddle
   Role: Software Architect & Developer
 
 /* SITE */

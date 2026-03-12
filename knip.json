@@ -1,0 +1,34 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "next": {
+    "entry": [
+      "next.config.{js,mjs,ts}",
+      "app/**/page.tsx",
+      "app/**/layout.tsx",
+      "app/api/**/route.ts",
+      "app/not-found.tsx",
+      "app/error.tsx",
+      "app/global-error.tsx",
+      "app/loading.tsx",
+      "mdx-components.tsx",
+      "middleware.ts"
+    ]
+  },
+  "project": ["**/*.{ts,tsx,js,mjs,mdx}"],
+  "ignore": [
+    "next-env.d.ts",
+    ".next/**",
+    "node_modules/**",
+    ".vercel/**",
+    "public/**"
+  ],
+  "ignoreDependencies": [
+    "sharp",
+    "postcss",
+    "@tailwindcss/postcss",
+    "tailwindcss-animate",
+    "tw-animate-css",
+    "prettier-plugin-tailwindcss"
+  ],
+  "ignoreBinaries": ["pnpm", "vercel"]
+}

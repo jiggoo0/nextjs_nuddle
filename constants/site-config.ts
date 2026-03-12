@@ -5,7 +5,7 @@
  * @rule ห้าม Hardcode ข้อความใดๆ ลงใน Component (.tsx) ให้มาแก้ไขที่ไฟล์นี้ 100%
  */
 
-import { Eye, Bot, Layers, LucideIcon } from "lucide-react";
+import { Soup, UtensilsCrossed, Star, LucideIcon } from "lucide-react";
 
 // ============================================================================
 // 1. CORE SITE IDENTITY (ข้อมูลหลักของเว็บไซต์)
@@ -13,8 +13,8 @@ import { Eye, Bot, Layers, LucideIcon } from "lucide-react";
 export const siteIdentity = {
   name: "ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก",
   description: "ที่สุดของบะหมี่เกี๊ยวปูในจังหวัดตาก หมูแดงย่างเตาถ่านสูตรโบราณ เปิดมาแล้วกว่า 9 ปี",
-  url: "https://sahachai.aemdevweb.com",
-  ogImage: "https://sahachai.aemdevweb.com/images/banner.jpg",
+  url: "https://sahachai-noodle.aemdevweb.com",
+  ogImage: "https://sahachai-noodle.aemdevweb.com/images/hero-noodle.webp",
   themeColor: "#b22222",
 };
 
@@ -38,36 +38,37 @@ export type NavLink = { title: string; href: string; label?: string };
 export const navLinks: NavLink[] = [
   { title: "หน้าแรก", href: "/" },
   { title: "เรื่องราว", href: "/about" },
-  { title: "เมนูแนะนำ", href: "/menu" },
-  { title: "ติดต่อเรา", href: "/contact" },
+  { title: "เมนูแนะนำ", href: "/#menu" },
+  { title: "บทความ", href: "/blog" },
+  { title: "ติดต่อเรา", href: "/#contact" },
 ];
 
 // ============================================================================
 // 3. HERO SECTION (ส่วนหน้าแรกสุด)
 // ============================================================================
 export const heroContent = {
-  badge: "Next-Gen Visual Systems",
-  headlineLine1: "Elite Visual Strategy",
-  headlineLine2: "& AI Protocol",
+  badge: "สูตรลับกว่า 9 ปี",
+  headlineLine1: "ช.สหชัย",
+  headlineLine2: "เกี๊ยวปูหมูแดง จ.ตาก",
   description:
-    "High-performance digital frameworks and AI-driven visual systems for global-scale brands.",
+    "ที่สุดของบะหมี่ทำเองสูตรโบราณ หมูแดงอบน้ำผึ้งย่างเตาถ่าน และเกี๊ยวปูเนื้อแน่นๆ ของดีเมืองตากที่คุณต้องลอง",
   ctaPrimary: {
-    label: "Initialize Protocol",
-    href: "#contact",
+    label: "สั่งอาหารออนไลน์",
+    href: "https://www.facebook.com/SahachaiNoodleTak",
   },
   ctaSecondary: {
-    label: "Explore Systems",
+    label: "ดูเมนูทั้งหมด",
     href: "#protocols",
   },
   stats: [
-    { value: "99.9%", label: "Uptime SLA" },
-    { value: "150+", label: "Brands Served" },
-    { value: "<50ms", label: "Response Time" },
+    { value: "9+", label: "ปีที่เปิดบริการ" },
+    { value: "500+", label: "รีวิวระดับ 5 ดาว" },
+    { value: "100%", label: "ทำเองทุกขั้นตอน" },
   ],
 };
 
 // ============================================================================
-// 4. PROTOCOLS SECTION (บริการ / ระบบการทำงาน)
+// 4. PROTOCOLS SECTION (เมนูแนะนำ / จุดเด่นของร้าน)
 // ============================================================================
 export type Protocol = {
   icon: LucideIcon;
@@ -77,52 +78,52 @@ export type Protocol = {
 };
 
 export const protocolsContent = {
-  badge: "// Core Systems",
-  title: "Core Protocols",
+  badge: "// เมนูซิกเนเจอร์",
+  title: "รสชาติที่เป็นเอกลักษณ์",
   description:
-    "Three integrated systems engineered for maximum performance and seamless brand execution.",
+    "จากสูตรดั้งเดิมกว่า 9 ปี เราคัดสรรวัตถุดิบคุณภาพเยี่ยม เพื่อส่งต่อความอร่อยในทุกๆ ชาม",
   items: [
     {
-      icon: Eye,
-      title: "Visual Intelligence",
+      icon: Soup,
+      title: "บะหมี่เกี๊ยวปูหมูแดง",
       description:
-        "AI-powered design analysis and generation systems that create pixel-perfect visual assets at scale. Real-time brand consistency enforcement across all touchpoints.",
+        "บะหมี่ไข่ทำเองเส้นเหนียมนุ่ม เสิร์ฟพร้อมเกี๊ยวปูชิ้นโต และหมูแดงอบน้ำผึ้งย่างเตาถ่านสูตรพิเศษที่นุ่มฉ่ำไม่เหมือนใคร",
       features: [
-        "Automated design audits",
-        "AI asset generation",
-        "Brand compliance engine",
-        "Multi-format optimization",
+        "บะหมี่ไข่สดทำเองทุกวัน",
+        "เกี๊ยวปูเนื้อแน่น",
+        "หมูแดงอบน้ำผึ้งย่างเตาถ่าน",
+        "น้ำซุปกระดูกหมูเข้มข้น",
       ],
     },
     {
-      icon: Bot,
-      title: "Strategic Automation",
+      icon: UtensilsCrossed,
+      title: "หมูแดงย่างเตาถ่าน",
       description:
-        "Intelligent workflow orchestration that eliminates manual bottlenecks. Self-optimizing pipelines that adapt to your team's velocity and project complexity.",
+        "หมูส่วนสันคอคัดพิเศษ หมักด้วยเครื่องยาจีนและน้ำผึ้งแท้ ย่างด้วยเตาถ่านแบบโบราณจนได้ความหอมและรสชาติที่กลมกล่อม",
       features: [
-        "Workflow orchestration",
-        "Predictive scheduling",
-        "Auto-scaling pipelines",
-        "Performance analytics",
+        "ย่างด้วยเตาถ่านโบราณ",
+        "น้ำราดสูตรลับเฉพาะ",
+        "หมูสันคอคัดพิเศษ",
+        "เสิร์ฟร้อนๆ ทุกจาน",
       ],
     },
     {
-      icon: Layers,
-      title: "Elite UI/UX",
+      icon: Star,
+      title: "เกี๊ยวปูทำมือ",
       description:
-        "Research-driven interface design backed by behavioral analytics and A/B tested interaction patterns. Enterprise-grade design systems built for scale.",
+        "เกี๊ยวแผ่นบางสอดไส้ด้วยหมูสับปรุงรสและเนื้อปูม้าสดๆ ห่อด้วยมือทุกชิ้น เพื่อให้ได้รสสัมผัสที่เต็มคำที่สุด",
       features: [
-        "Behavioral analytics",
-        "Interaction design",
-        "Design system architecture",
-        "Accessibility audits",
+        "เนื้อปูม้าสดส่งตรงทุกวัน",
+        "ห่อมือชิ้นต่อชิ้น",
+        "ไส้แน่นเต็มคำ",
+        "ไม่มีสารกันบูด",
       ],
     },
   ] as Protocol[],
 };
 
 // ============================================================================
-// 5. PRICING SECTION (แพ็กเกจราคา)
+// 5. PRICING SECTION (รายการราคา)
 // ============================================================================
 export type PricingTier = {
   name: string;
@@ -135,66 +136,60 @@ export type PricingTier = {
 };
 
 export const pricingContent = {
-  badge: "// Strategic Pricing",
-  title: "Select Your Protocol",
+  badge: "// ราคามิตรภาพ",
+  title: "เลือกความอร่อยในแบบคุณ",
   description:
-    "Scalable pricing tiers designed for every stage of growth. All plans include core AI infrastructure.",
+    "ราคาคุ้มค่ากับคุณภาพที่คุณได้รับ เราคัดสรรสิ่งที่ดีที่สุดมาให้ในทุกๆ ชาม",
   tiers: [
     {
-      name: "Basic",
-      price: "$2,400",
-      period: "/month",
-      description: "Essential visual systems for emerging brands.",
+      name: "ธรรมดา",
+      price: "฿50",
+      period: "/ชาม",
+      description: "อิ่มอร่อยพอดีคำกับสูตรดั้งเดิม",
       features: [
-        "Brand identity design",
-        "Up to 5 pages UI/UX",
-        "Basic AI asset generation",
-        "Monthly design audits",
-        "Email support",
+        "บะหมี่ไข่สด",
+        "หมูแดงอบน้ำผึ้ง",
+        "เกี๊ยวปู 2 ชิ้น",
+        "น้ำซุปหอมหวาน",
       ],
-      cta: "Select Basic",
+      cta: "สั่งชามนี้",
       highlighted: false,
     },
     {
-      name: "Pro",
-      price: "$5,800",
-      period: "/month",
-      description: "Advanced AI protocols for scaling operations.",
+      name: "พิเศษ",
+      price: "฿60",
+      period: "/ชาม",
+      description: "เพิ่มความฟินด้วยเนื้อปูและเครื่องเน้นๆ",
       features: [
-        "Full design system architecture",
-        "Unlimited pages UI/UX",
-        "Advanced AI visual engine",
-        "Weekly performance reports",
-        "Strategic automation pipelines",
-        "Priority support",
-        "Dedicated account manager",
+        "บะหมี่ไข่ 2 ก้อน",
+        "หมูแดงเพิ่มพิเศษ",
+        "เกี๊ยวปู 4 ชิ้น",
+        "เนื้อปูม้าโรยหน้า",
+        "น้ำซุปถ้วยโต",
       ],
-      cta: "Select Pro",
+      cta: "สั่งพิเศษเลย",
       highlighted: true,
     },
     {
-      name: "Elite",
-      price: "$12,000",
-      period: "/month",
-      description: "Complete enterprise-grade visual infrastructure.",
+      name: "จัมโบ้ / รวมมิตร",
+      price: "฿80",
+      period: "/ชาม",
+      description: "จัดเต็มสำหรับคนรักบะหมี่ตัวจริง",
       features: [
-        "Custom AI model training",
-        "Enterprise design system",
-        "24/7 dedicated team",
-        "Real-time brand compliance",
-        "Multi-platform deployment",
-        "Executive strategy sessions",
-        "SLA-backed uptime guarantee",
-        "White-glove onboarding",
+        "บะหมี่ไข่ 3 ก้อน",
+        "หมูแดง + เกี๊ยวปูแบบจุใจ",
+        "เนื้อปูม้าพรีเมียม",
+        "เครื่องรวมมิตรทุกอย่าง",
+        "บริการจัดส่งฟรี (ในเขตที่กำหนด)",
       ],
-      cta: "Select Elite",
+      cta: "สั่งชุดใหญ่",
       highlighted: false,
     },
   ] as PricingTier[],
 };
 
 // ============================================================================
-// 6. PORTFOLIO SECTION (ผลงาน)
+// 6. PORTFOLIO SECTION (แกลเลอรีความอร่อย)
 // ============================================================================
 export type PortfolioItem = {
   title: string;
@@ -205,50 +200,50 @@ export type PortfolioItem = {
 };
 
 export const portfolioContent = {
-  badge: "// Case Studies",
-  title: "Portfolio",
+  badge: "// แกลเลอรี",
+  title: "ความอร่อยที่พิสูจน์ได้",
   description:
-    "A selection of AI-generated visuals and strategic design systems deployed for enterprise clients.",
+    "บรรยากาศร้านและเมนูยอดฮิตที่ครองใจชาวจังหวัดตากและนักท่องเที่ยวมาอย่างยาวนาน",
   items: [
     {
-      title: "Neural Network Visualization",
-      category: "AI Visual System",
-      image: "/portfolio-ai-visual-1.jpg",
+      title: "บะหมี่เกี๊ยวปูหมูแดงซิกเนเจอร์",
+      category: "เมนูหลัก",
+      image: "/images/hero-noodle.webp",
       span: "lg:col-span-2 lg:row-span-2",
       aspect: "aspect-square lg:aspect-auto lg:h-full",
     },
     {
-      title: "Analytics Dashboard",
-      category: "UI/UX Design",
-      image: "/portfolio-ai-visual-2.jpg",
+      title: "บะหมี่แห้งพิเศษปู",
+      category: "เมนูแนะนำ",
+      image: "/images/noodle-special.webp",
       span: "",
       aspect: "aspect-[4/3]",
     },
     {
-      title: "Geometric Identity",
-      category: "Brand System",
-      image: "/portfolio-ai-visual-3.jpg",
+      title: "บรรยากาศหน้าร้าน",
+      category: "จุดเช็คอิน",
+      image: "/images/hero-noodle.webp",
       span: "",
       aspect: "aspect-[4/3]",
     },
     {
-      title: "Machine Vision",
-      category: "AI Protocol",
-      image: "/portfolio-ai-visual-4.jpg",
+      title: "หมูแดงย่างเตาถ่านสดๆ",
+      category: "เบื้องหลังความอร่อย",
+      image: "/images/noodle-special.webp",
       span: "",
       aspect: "aspect-[4/3]",
     },
     {
-      title: "Particle Systems",
-      category: "Generative Art",
-      image: "/portfolio-ai-visual-5.jpg",
+      title: "เกี๊ยวปูห่อใหม่ทุกวัน",
+      category: "วัตถุดิบ",
+      image: "/images/hero-noodle.webp",
       span: "",
       aspect: "aspect-[4/3]",
     },
     {
-      title: "Brand Architecture",
-      category: "Design System",
-      image: "/portfolio-ai-visual-6.jpg",
+      title: "ความสุขในทุกคำ",
+      category: "รีวิวลูกค้า",
+      image: "/images/noodle-special.webp",
       span: "lg:col-span-2",
       aspect: "aspect-[4/3] lg:aspect-[21/9]",
     },
@@ -264,21 +259,21 @@ export const footerContent = {
 };
 
 // ============================================================================
-// 8. LEAD CAPTURE / CONTACT FORM (ฟอร์มติดต่อ)
+// 8. LEAD CAPTURE / CONTACT FORM (สั่งซื้อ / ติดต่อ)
 // ============================================================================
 export const leadCaptureContent = {
-  badge: "// Initialize",
-  title: "Start Your Protocol",
+  badge: "// ติดต่อเรา",
+  title: "สั่งอาหารล่วงหน้า",
   description:
-    "Submit your details and our strategy team will prepare a custom deployment plan within 24 hours.",
-  successTitle: "Protocol Initialized",
+    "กรอกข้อมูลเพื่อสั่งอาหารล่วงหน้า หรือสอบถามเส้นทาง ร้านของเรายินดีให้บริการทุกท่านครับ",
+  successTitle: "รับข้อมูลเรียบร้อย",
   successDescription:
-    "Our team will contact you within 24 hours with your custom deployment plan.",
-  buttonText: "Submit Request",
+    "ขอบคุณที่เลือก ช.สหชัย เราจะดำเนินการเตรียมความอร่อยให้ท่านโดยเร็วที่สุด",
+  buttonText: "ส่งข้อมูล",
   fields: {
-    name: { label: "Full Name", placeholder: "John Doe" },
-    email: { label: "Work Email", placeholder: "john@company.com" },
-    company: { label: "Company", placeholder: "Acme Inc." },
+    name: { label: "ชื่อของคุณ", placeholder: "เช่น คุณสมชาย" },
+    email: { label: "เบอร์โทรศัพท์", placeholder: "08x-xxx-xxxx" },
+    company: { label: "เมนูที่ต้องการ", placeholder: "เช่น บะหมี่เกี๊ยวปู 2 ห่อ" },
   },
 };
 

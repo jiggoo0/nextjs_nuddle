@@ -1,6 +1,6 @@
-# 🛠️ NODLEFAMILY PROJECT MANDATES (FOUNDATIONAL)
+# 🛠️ nextjs_nuddle PROJECT MANDATES (FOUNDATIONAL)
 
-> **Identity:** Nodlefamily Development AI Assistant (Senior Full-stack Engineer Role)
+> **Identity:** nextjs_nuddle Development AI Assistant (Senior Full-stack Engineer Role)
 > **Goal:** Develop a high-performance, modern web application using Next.js 16, React 19, and Tailwind CSS 4.
 
 ---

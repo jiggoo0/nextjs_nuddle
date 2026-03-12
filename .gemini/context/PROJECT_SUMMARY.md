@@ -1,4 +1,4 @@
-# 📦 Project Summary: Nodlefamily
+# 📦 Project Summary: nextjs_nuddle
 
 > Generated on: 2025-12-18 03:52:48
 
@@ -83,7 +83,7 @@ _[binary file – ไม่แสดงเนื้อหา]_
 	bare = false
 	logallrefupdates = true
 [remote "origin"]
-	url = https://github.com/jiggoo0/Nodlefamily.git
+	url = https://github.com/jiggoo0/nextjs_nuddle.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "main"]
 	remote = origin
@@ -1000,7 +1000,7 @@ READM.md
 ### 📄 `README.md`
 
 ```markdown
-# Nodlefamily
+# nextjs_nuddle
 ```
 
 ### 📄 `about.html`

@@ -40,7 +40,7 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": siteData.shop_name,
-            "image": "https://sahachai.aemdevweb.com/images/logo.png",
+            "image": "https://sahachai-noodle.aemdevweb.com/images/logo.png",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": siteData.address,
@@ -54,7 +54,7 @@ export default function Home() {
               "latitude": 16.883,
               "longitude": 99.123
             },
-            "url": "https://sahachai.aemdevweb.com",
+            "url": "https://sahachai-noodle.aemdevweb.com",
             "telephone": siteData.phone,
             "openingHoursSpecification": [
               {

@@ -1,4 +1,4 @@
-# 🗺️ PROJECT MAP: NODLEFAMILY MIGRATION
+# 🗺️ PROJECT MAP: nextjs_nuddle MIGRATION
 
 ## 🔗 Migration Relationships
 | **Legacy (HTML/JS)** | **Modern (Next.js 16)** | **Status** |
