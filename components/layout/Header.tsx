@@ -2,17 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
 import { siteConfig } from "@/constants/site-config";
-
-const navLinks = [
-  { href: "#protocols", label: "เรื่องราว" },
-  { href: "#portfolio", label: "เมนู" },
-  { href: "#pricing", label: "ราคาสินค้า" },
-  { href: "#contact", label: "ติดต่อเรา" },
-];
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,15 +25,23 @@ export function Navigation() {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-md bg-primary/20 border border-primary/40 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-              <span className="text-primary font-bold text-sm font-mono">
-                ช
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 overflow-hidden rounded-xl border border-primary/10 shadow-sm transition-transform group-hover:scale-105">
+              <Image
+                src="/images/logo.svg"
+                alt="โลโก้ร้าน ช.สหชัย"
+                fill
+                className="object-contain p-1"
+              />
+            </div>
+            <div className="flex flex-col -space-y-1">
+              <span className="text-foreground font-bold text-lg tracking-tighter">
+                ช.สหชัย
+              </span>
+              <span className="text-[10px] text-primary font-bold uppercase tracking-widest">
+                since 2017
               </span>
             </div>
-            <span className="text-foreground font-bold text-lg tracking-tight">
-              ช.สหชัย
-            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

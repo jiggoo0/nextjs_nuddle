@@ -6,11 +6,12 @@
 ---
 
 ## 🛑 CORE OPERATING PRINCIPLES
-1.  **Context First:** Always read `.gemini/context/PROJECT_STATE.md` at the start of every session to maintain continuity.
-2.  **Tech Stack Loyalty:** Adhere strictly to the established tech stack (Next.js 16, React 19, Tailwind CSS 4). Use modern patterns (Server Components, Suspense, etc.).
-3.  **Zero-Error Standard:** Maintain zero linting and type errors. Run `npm run check` or `npm run lint` before completing tasks.
-4.  **Surgical Changes:** Modify only what is necessary. Follow established naming conventions and component structures.
-5.  **Documentation:** Keep `.gemini/context/` updated with architectural decisions and task status.
+1.  **Context First:** Always read `.gemini/context/PROJECT_STATE.md` and `.gemini/context/MAP.md` at the start of every session to maintain continuity and understand project structure.
+2.  **Strict Behavior:** You MUST read and strictly adhere to `.gemini/rules/AI_BEHAVIOR.md` (e.g., Zero Emoji Policy, SSOT adherence).
+3.  **Tech Stack Loyalty:** Adhere strictly to the established tech stack (Next.js 16, React 19, Tailwind CSS 4). Use modern patterns (Server Components, Suspense, etc.).
+4.  **Zero-Error Standard:** Maintain zero linting and type errors. Run `npm run check` or `npm run lint` before completing tasks.
+5.  **Surgical Changes:** Modify only what is necessary. Follow established naming conventions and component structures.
+6.  **Documentation:** Keep `.gemini/context/` updated with architectural decisions and task status.
 
 ---
 

@@ -1,12 +1,26 @@
 import type { Metadata } from "next";
-import { Navigation } from "@/components/navigation";
-import { FooterSection } from "@/components/sections/footer";
+import { Navigation } from "@/components/layout/Header";
+import { FooterSection } from "@/components/layout/Footer";
 import { AnimatedSection } from "@/components/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import servicesData from "@/data/services.json";
+
+interface MenuItem {
+  id: number;
+  name: string;
+  price: string;
+  description: string;
+  img: string;
+  recommended: boolean;
+}
+
+interface MenuCategory {
+  name: string;
+  items: MenuItem[];
+}
 
 export const metadata: Metadata = {
   title: "เมนูอร่อย | ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก",
@@ -15,6 +29,8 @@ export const metadata: Metadata = {
 };
 
 export default function MenuPage() {
+  const categories = servicesData.categories as unknown as MenuCategory[];
+
   return (
     <div className="flex flex-min-h-screen flex-col bg-warm-cream">
       <Navigation />
@@ -33,7 +49,7 @@ export default function MenuPage() {
             </p>
           </AnimatedSection>
 
-          {servicesData.categories.map((category: any, catIdx: number) => (
+          {categories.map((category: MenuCategory, catIdx: number) => (
             <AnimatedSection key={catIdx} className="mb-20">
               <div className="flex items-center gap-4 mb-8">
                 <h2 className="text-3xl font-bold text-dark-text whitespace-nowrap">{category.name}</h2>
@@ -41,7 +57,7 @@ export default function MenuPage() {
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {category.items.map((item: any) => (
+                {category.items.map((item: MenuItem) => (
                   <Card key={item.id} className="overflow-hidden border-none shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 rounded-2xl bg-white group">
                     <div className="relative h-64 overflow-hidden">
                       <Image 

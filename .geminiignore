@@ -13,8 +13,8 @@ out/
 
 # --- Binary & Media (AI อ่านไม่ได้ ไม่ต้องส่งไป) ---
 *.png
-*.jpg
-*.jpeg
+# *.jpg
+# *.jpeg
 *.gif
 *.svg
 *.ico

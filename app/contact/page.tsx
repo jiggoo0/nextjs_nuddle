@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Navigation } from "@/components/navigation";
-import { FooterSection } from "@/components/sections/footer";
+import { Navigation } from "@/components/layout/Header";
+import { FooterSection } from "@/components/layout/Footer";
 import { AnimatedSection } from "@/components/animated-section";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Phone, Clock, Facebook, Mail } from "lucide-react";
+import { MapPin, Phone, Clock, Facebook } from "lucide-react";
 import siteData from "@/data/site.json";
 
 export const metadata: Metadata = {

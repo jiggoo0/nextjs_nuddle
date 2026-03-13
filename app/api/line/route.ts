@@ -22,24 +22,24 @@ export async function POST(req: Request) {
           const userMessage = event.message.text.trim().toLowerCase();
           const userId = event.source.userId;
           
-          let replyText = "";
-
           // --- SPECIAL LOGIC: ADMIN RECOGNITION ---
           if (userId === ADMIN_USER_ID && userMessage === "status") {
-            replyText = `🛡️ [AEMDEVWEB SYSTEM STATUS]
+            const replyText = `[AEMDEVWEB SYSTEM STATUS]
 - Project: ${siteConfig.identity.name}
 - Domain: ${siteConfig.identity.url}
 - Engine: Next.js 16 (React 19)
 - Webhook: Active
 - Developer: นายอลงกรณ์ ยมเกิด
 
-ระบบทำงานปกติ 100% ครับนายท่าน! 🚀`;
+ระบบทำงานปกติ 100% ครับนายท่าน`;
             return client.replyMessage(event.replyToken, { type: 'text', text: replyText });
           }
 
+          let replyText = "";
+
           // --- LOGIC: NAVIGATION MENU (Keywords & Numbers) ---
           if (userMessage.includes("เมนู") || userMessage === "1") {
-            replyText = `🍜 [เมนูแนะนำ ${siteConfig.identity.name}]
+            replyText = `[เมนูแนะนำ ${siteConfig.identity.name}]
 1. บะหมี่เกี๊ยวปูหมูแดงพิเศษ (60.-)
 2. บะหมี่ปู หมูแดง (50/60.-)
 3. หมูแดงย่างเตาถ่าน (จานแยก)
@@ -48,25 +48,25 @@ export async function POST(req: Request) {
 ดูรูปเมนูทั้งหมดได้ที่: ${siteConfig.identity.url}/#menu
 อ่านคู่มือความอร่อย: ${siteConfig.identity.url}/about`;
           } else if (userMessage.includes("พิกัด") || userMessage.includes("ที่ตั้ง") || userMessage === "2") {
-            replyText = `📍 [พิกัดและเวลาเปิด-ปิด]
+            replyText = `[พิกัดและเวลาเปิด-ปิด]
 - ${siteConfig.contact.address}
 - เปิด: 11:00 - 20:00 น. (จันทร์-เสาร์)
 - ปิด: วันอาทิตย์
 
-🗺️ แผนที่ Google Maps: https://maps.app.goo.gl/KLdnUCffDN6RZpTT8`;
+แผนที่ Google Maps: https://maps.app.goo.gl/KLdnUCffDN6RZpTT8`;
           } else if (userMessage.includes("สั่ง") || userMessage === "3") {
-            replyText = `📞 [สั่งอาหารล่วงหน้า]
+            replyText = `[สั่งอาหารล่วงหน้า]
 - โทร: ${siteConfig.contact.phone} (เฮียเนก/เจ๊ตั๊ก)
 - หรือแจ้งรายการอาหารในแชทนี้ได้เลยครับ ทีมงานจะรีบตรวจสอบให้เร็วที่สุด
 
 (แนะนำ: สั่งล่วงหน้า 15-20 นาทีเพื่อความรวดเร็วครับ)`;
           } else if (userMessage.includes("ติดต่อ") || userMessage === "4") {
-            replyText = `💬 [ติดต่อแอดมิน]
+            replyText = `[ติดต่อแอดมิน]
 กรุณาพิมพ์ข้อความทิ้งไว้ได้เลยครับ เฮียเนกหรือเจ๊ตั๊กจะรีบเข้ามาตอบกลับด้วยตัวเองครับ
 
 (ระบบนี้พัฒนาโดย AEMDEVWEB)`;
           } else {
-            const greeting = userId === ADMIN_USER_ID ? "สวัสดีครับ นายท่านอลงกรณ์ (AEMDEVWEB)! 🛡️" : `สวัสดีครับ ${siteConfig.identity.name} ยินดีให้บริการ! 🍜`;
+            const greeting = userId === ADMIN_USER_ID ? "สวัสดีครับ นายท่านอลงกรณ์ (AEMDEVWEB)" : `สวัสดีครับ ${siteConfig.identity.name} ยินดีให้บริการ`;
             replyText = `${greeting}
 ตำนานบะหมี่ 9 ปี เมืองตาก
 

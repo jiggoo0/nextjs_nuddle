@@ -1,0 +1,16 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle for Warmth -->
+  <circle cx="100" cy="100" r="90" fill="#B22222" fill-opacity="0.05"/>
+  
+  <!-- Bowl -->
+  <path d="M40 100C40 133.137 66.8629 160 100 160C133.137 160 160 133.137 160 100H40Z" fill="#B22222"/>
+  
+  <!-- Noodle Strands (Heart Shape Steam) -->
+  <path d="M85 80C85 70 95 65 100 75C105 65 115 70 115 80C115 95 100 105 100 105C100 105 85 95 85 80Z" stroke="#FFB700" stroke-width="4" stroke-linecap="round"/>
+  <path d="M70 70C75 60 85 65 85 75" stroke="#FFB700" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <path d="M130 70C125 60 115 65 115 75" stroke="#FFB700" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Logo Text -->
+  <text x="100" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#B22222">ช.สหชัย</text>
+  <text x="100" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="10" fill="#FFFFFF">SINCE 2017</text>
+</svg>

@@ -1,49 +1,67 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: var(--font-inter);
-  
-  /* 🍜 NODLEFAMILY IDENTITY COLORS */
-  --color-primary-red: #b22222;
-  --color-primary-dark: #8b0000;
-  --color-noodle-gold: #ffcc00;
-  --color-warm-cream: #fff5e6;
-  --color-dark-text: #332211;
-  --color-light-text: #665544;
+@plugin "tailwindcss-animate";
 
-  /* SHADOWS & RADIUS */
-  --radius-lg: 30px;
-  --radius-md: 15px;
-  --shadow-warm: 0 10px 25px rgba(178, 34, 34, 0.08);
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-background: #fffcf2; /* Warm Cream - กระตุ้นความอยากอาหาร */
+  --color-foreground: #252422;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #252422;
+
+  --color-popover: #ffffff;
+  --color-popover-foreground: #252422;
+
+  --color-primary: #b22222; /* Deep Red - สีหมูแดง */
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #ffb700; /* Noodle Gold - สีเส้นบะหมี่ */
+  --color-secondary-foreground: #252422;
+
+  --color-muted: #f4f1de;
+  --color-muted-foreground: #66615b;
+
+  --color-accent: #eb5e28; /* Orange-ish - สีซอสเย็นตาโฟ/ต้มยำ */
+  --color-accent-foreground: #ffffff;
+
+  --color-destructive: #d00000;
+  --color-destructive-foreground: #ffffff;
+
+  --color-border: #e9ecef;
+  --color-input: #e9ecef;
+  --color-ring: #b22222;
+
+  --radius-lg: 1.5rem;
+  --radius-md: 1rem;
+  --radius-sm: 0.5rem;
 }
 
+/* 🍜 CUSTOM FOODIE STYLES */
 @layer base {
-  body {
-    @apply bg-warm-cream text-dark-text font-sans antialiased;
-    scroll-behavior: smooth;
+  * {
+    @apply border-border outline-ring/50;
   }
-  
-  h1, h2, h3, h4 {
-    @apply font-bold tracking-tight text-primary-dark;
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 @layer components {
-  .container-stable {
-    @apply w-full max-w-7xl mx-auto px-6;
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
   }
   
-  .section-warmth {
-    @apply bg-white rounded-lg p-10 my-10 shadow-warm border-b-6 border-noodle-gold relative overflow-hidden;
+  .food-card {
+    @apply bg-card rounded-[2rem] border-none shadow-sm hover:shadow-xl transition-all duration-500;
   }
-}
 
-/* CUSTOM ANIMATIONS */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  .nav-link {
+    @apply text-muted-foreground hover:text-primary transition-colors font-medium;
+  }
 }
