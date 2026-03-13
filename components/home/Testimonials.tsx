@@ -49,7 +49,7 @@ export function ReviewCarousel() {
 
         <div className="cursor-grab overflow-hidden active:cursor-grabbing" ref={emblaRef}>
           <div className="-ml-6 flex">
-            {customerReviews.map((review) => (
+            {customerReviews.slice(0, 12).map((review) => (
               <div
                 key={review.id}
                 className="flex-[0_0_100%] pl-6 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"

@@ -18,6 +18,8 @@ export function HeroSection() {
           fill
           className="scale-105 object-cover opacity-20"
           priority
+          sizes="100vw"
+          quality={75}
         />
         <div className="from-background to-background absolute inset-0 bg-gradient-to-b via-transparent" />
       </div>
