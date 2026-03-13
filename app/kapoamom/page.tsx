@@ -20,31 +20,32 @@ import Link from "next/link";
 import { siteConfig } from "@/constants/site-config";
 
 export const metadata: Metadata = {
-  title: "kapoamom | ซอสผัดกะเพราฝีมือแม่ อร่อยเหมือนแม่ผัดให้แน่นอน",
+  title: "ซอสผัดกะเพรา kapoamom | สูตรลับ 9 ปี ช.สหชัย อร่อยไม่ต้องปรุงเพิ่ม",
   description:
-    "สัมผัสซอสผัดกะเพราสูตรลับระดับตำนาน 9 ปี จากร้าน ช.สหชัย สู่แบรนด์ kapoamom รสชาติจัดจ้าน หอมกลิ่นเตาถ่าน พัฒนาการตลาดโดย AEMDEVWEB",
+    "ที่สุดของซอสผัดกะเพราสำเร็จรูป สูตรลับระดับตำนาน 9 ปีจากหน้าเตา ช.สหชัย เมืองตาก 'แค่เทแล้วผัด' ก็อร่อยเหมือนแม่ทำให้ทานเองที่บ้าน จัดจ้าน หอมกลิ่นเตาถ่าน สั่งซื้อได้แล้ววันนี้!",
+  keywords: ["ซอสผัดกะเพรา", "กะเพราสำเร็จรูป", "kapoamom", "ช.สหชัย เกี๊ยวปู", "ของดีเมืองตาก", "ซอสปรุงรส", "สูตรลับ 9 ปี"],
   openGraph: {
-    title: "kapoamom | ซอสผัดกะเพราฝีมือแม่ ที่สุดของความจัดจ้าน",
+    title: "กะเพราจานโปรด อร่อยง่ายๆ ด้วยซอส kapoamom ฝีมือแม่",
     description:
-      "อร่อยเหมือนกะเพราแม่ที่ผัดให้แน่นอน สูตรลับ 9 ปีที่ส่งตรงจากหน้าเตา ช.สหชัย ถึงบ้านคุณ",
+      "เบื่อไหมที่ผัดกะเพรากี่ครั้งก็รสชาติไม่นิ่ง? ลอง kapoamom ซอสสูตรลับ 9 ปีที่ทุกคนยอมรับ อร่อยระดับตำนาน แค่มีซอสขวดเดียวก็จบ!",
     url: `${siteConfig.identity.url}/kapoamom`,
-    siteName: "kapoamom by ช.สหชัย",
+    siteName: `kapoamom by ${siteConfig.identity.name}`,
     images: [
       {
-        url: "/images/kapoamom-sauce.webp",
+        url: "/og-kapoamom.webp",
         width: 1200,
         height: 630,
-        alt: "ซอสผัดกะเพรา kapoamom ฝีมือแม่",
+        alt: "ซอสผัดกะเพรา kapoamom สูตรลับ 9 ปี ช.สหชัย",
       },
     ],
     locale: "th_TH",
-    type: "article",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "kapoamom | ซอสผัดกะเพราฝีมือแม่",
-    description: "ไม่ต้องปรุงเพิ่ม แค่เทแล้วผัด ก็อร่อยระดับตำนาน ช.สหชัย",
-    images: ["/images/kapoamom-sauce.webp"],
+    title: "ซอสกะเพรา kapoamom | อร่อยเหมือนแม่ผัดให้แน่นอน",
+    description: "ตำนานความอร่อย 9 ปีจากร้าน ช.สหชัย สู่ซอสผัดกะเพราที่คุณต้องมีติดบ้าน",
+    images: ["/og-kapoamom.webp"],
   },
 };
 
