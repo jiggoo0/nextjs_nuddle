@@ -24,7 +24,7 @@ export const contactInfo = {
   lineQrCode: "https://qr-official.line.me/gs/M_698fqfdg_GW.png?oat_content=qr",
   address: "91/1 ถนนมหาดไทยบำรุง ต.หนองหลวง อ.เมือง จ.ตาก 63000",
   googleMaps: "https://maps.app.goo.gl/KLdnUCffDN6RZpTT8",
-  businessHours: "10:30 - 21:00 น. (เปิดบริการทุกวัน)",
+  businessHours: "10:30 - 21:00 น. (หยุดทุกวันอาทิตย์)",
 };
 
 export const navLinks = [

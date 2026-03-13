@@ -50,8 +50,8 @@ export async function POST(req: Request) {
           } else if (userMessage.includes("พิกัด") || userMessage.includes("ที่ตั้ง") || userMessage === "2") {
             replyText = `[พิกัดและเวลาเปิด-ปิด]
 - ${siteConfig.contact.address}
-- เปิด: 11:00 - 20:00 น. (จันทร์-เสาร์)
-- ปิด: วันอาทิตย์
+- เปิด: 10:30 - 21:00 น. (จันทร์-เสาร์)
+- หยุดทุกวันอาทิตย์
 
 แผนที่ Google Maps: https://maps.app.goo.gl/KLdnUCffDN6RZpTT8`;
           } else if (userMessage.includes("สั่ง") || userMessage === "3") {
