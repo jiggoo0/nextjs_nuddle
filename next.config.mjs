@@ -2,43 +2,44 @@ import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configure `pageExtensions` to include MDX files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
     unoptimized: true,
   },
-  // 🚀 FIXED: Resolve Webpack CSS Resolver Error on Android/Local Environment
+  // 🚀 FIXED: Advanced Webpack Configuration to handle Tailwind 4 CSS resolution issues in local environment
   webpack: (config) => {
     config.module.rules.forEach((rule) => {
       if (rule.oneOf) {
         rule.oneOf.forEach((oneOfRule) => {
           if (oneOfRule.use) {
-            const cssLoader = Array.isArray(oneOfRule.use)
-              ? oneOfRule.use.find((u) => u.loader?.includes("css-loader"))
-              : oneOfRule.use.loader?.includes("css-loader") ? oneOfRule.use : null;
-
-            if (cssLoader && cssLoader.options) {
-              // 🛡️ Disable URL and Path Resolution to fix './&' and '/images/...' error in local Webpack
-              cssLoader.options.url = false;
-              cssLoader.options.import = false;
-            }
+            const uses = Array.isArray(oneOfRule.use) ? oneOfRule.use : [oneOfRule.use];
+            uses.forEach((u) => {
+              if (u.loader && u.loader.includes("css-loader")) {
+                u.options = {
+                  ...u.options,
+                  url: false, // 🛡️ Do not resolve url() in CSS
+                  import: false, // 🛡️ Do not resolve @import in CSS
+                };
+              }
+            });
           }
         });
       }
     });
+
+    // 🛡️ Ignore specific broken modules that Webpack tries to find but shouldn't
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "./&": false,
+      "../&": false,
+    };
+
     return config;
   },
 };
 
-const withMDX = createMDX({
-  // Add markdown plugins here, as desired
-});
-
-// Merge MDX config with Next.js config
+const withMDX = createMDX({});
 export default withMDX(nextConfig);
