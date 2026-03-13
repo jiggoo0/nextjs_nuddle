@@ -18,34 +18,46 @@ export async function POST(req: Request) {
 
     const results = await Promise.all(
       events.map(async (event) => {
+        // --- SHARED HELPER: UNIVERSAL QUICK REPLIES ---
+        const quickReplyItems: any = {
+          items: [
+            { type: "action", action: { type: "message", label: "🍴 เมนูและราคา", text: "1" } },
+            { type: "action", action: { type: "message", label: "📍 พิกัด/เวลาเปิด", text: "2" } },
+            { type: "action", action: { type: "message", label: "☎️ สั่งอาหารด่วน", text: "3" } },
+            { type: "action", action: { type: "message", label: "🤝 จัดเลี้ยง/ธุรกิจ", text: "4" } },
+            { type: "action", action: { type: "message", label: "💬 คุยกับเจ้าของร้าน", text: "5" } },
+            { type: "action", action: { type: "message", label: "🏠 หน้าแรก", text: "0" } },
+          ],
+        };
+
+        // --- EVENT: NEW FRIEND ADDED (FOLLOW) ---
+        if (event.type === "follow") {
+          return client.replyMessage(event.replyToken, [
+            {
+              type: "image",
+              originalContentUrl: `${siteConfig.identity.url}/images/shop-atmosphere.webp`,
+              previewImageUrl: `${siteConfig.identity.url}/images/shop-atmosphere.webp`,
+            },
+            {
+              type: "text",
+              text: `ยินดีต้อนรับสู่ครอบครัว ${siteConfig.identity.name} ครับ! 🙏\n\nผม "เฮียเนก" และ "เจ๊ตั๊ก" ขอบคุณที่ให้ความสนใจบะหมี่ไข่ 98% สูตรลับ 9 ปีของเราครับ\n\nหิวเมื่อไหร่ หรืออยากสอบถามข้อมูลส่วนไหน กดเลือกที่ "ปุ่มเมนู" ด้านล่างได้ทันทีเลยครับ 👇`,
+              quickReply: quickReplyItems,
+            },
+          ]);
+        }
+
+        // --- EVENT: MESSAGE RECEIVED ---
         if (event.type === "message" && event.message.type === "text") {
           const userMessage = event.message.text.trim().toLowerCase();
           const userId = event.source.userId;
 
           // --- SPECIAL LOGIC: ADMIN RECOGNITION ---
           if (userId === ADMIN_USER_ID && userMessage === "status") {
-            const statusText = `[AEMDEVWEB SYSTEM STATUS]
-- Project: ${siteConfig.identity.name}
-- Domain: ${siteConfig.identity.url}
-- Engine: Next.js 16 (React 19)
-- Webhook: Active
-- Developer: นายอลงกรณ์ ยมเกิด
-
-ระบบทำงานปกติ 100% ครับนายท่าน`;
+            const statusText = `[AEMDEVWEB SYSTEM STATUS]\n- Project: ${siteConfig.identity.name}\n- Domain: ${siteConfig.identity.url}\n- Engine: Next.js 16 (React 19)\n- Webhook: Active\n- Developer: นายอลงกรณ์ ยมเกิด\n\nระบบทำงานปกติ 100% ครับนายท่าน`;
             return client.replyMessage(event.replyToken, { type: "text", text: statusText });
           }
 
           let replyText = "";
-          const quickReplyItems: any = {
-            items: [
-              { type: "action", action: { type: "message", label: "🍜 เมนูและราคา", text: "1" } },
-              { type: "action", action: { type: "message", label: "📍 พิกัด/เวลาเปิด", text: "2" } },
-              { type: "action", action: { type: "message", label: "☎️ สั่งอาหารด่วน", text: "3" } },
-              { type: "action", action: { type: "message", label: "🤝 จัดเลี้ยง/ธุรกิจ", text: "4" } },
-              { type: "action", action: { type: "message", label: "💬 คุยกับเจ้าของร้าน", text: "5" } },
-              { type: "action", action: { type: "message", label: "🏠 หน้าแรก", text: "0" } },
-            ],
-          };
 
           // --- LOGIC: NAVIGATION MENU ---
           if (userMessage.includes("เมนู") || userMessage === "1") {
