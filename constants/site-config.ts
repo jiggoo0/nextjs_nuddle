@@ -15,7 +15,7 @@ export const siteIdentity = {
   ogImage: "/images/founders-warmth.webp",
   themeColor: "#b22222",
   keywords: [
-    "ร้านอาหารตาก 2568",
+    "ร้านอาหารตาก 2569",
     "ของกินเมืองตาก",
     "ร้านอร่อยจังหวัดตาก",
     "บะหมี่ทำเอง ตาก",

@@ -6,12 +6,23 @@ import { siteConfig } from "@/constants/site-config";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.identity.url),
-  title: siteConfig.identity.name,
+  title: {
+    default: siteConfig.identity.name,
+    template: `%s | ${siteConfig.identity.name}`,
+  },
   description: siteConfig.identity.description,
   keywords: siteConfig.identity.keywords,
   authors: [{ name: "Alogkorn Yomkerd (AEMZA MAX)", url: "https://www.me.aemdevweb.com" }],
   creator: "AEMDEVWEB - www.aemdevweb.com",
   publisher: "นายอลงกรณ์ ยมเกิด (Alogkorn Yomkerd)",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: siteConfig.identity.name,
     description: siteConfig.identity.description,
@@ -51,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="th" suppressHydrationWarning>
       <body className="font-sans antialiased">
         {children}
         <Analytics />
