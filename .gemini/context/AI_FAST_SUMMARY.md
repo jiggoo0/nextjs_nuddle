@@ -1,5 +1,5 @@
 # 🤖 AI FAST PROJECT CONTEXT
-> Generated at: Fri Mar 13 12:13:48 +07 2026
+> Generated at: Fri Mar 13 12:31:36 +07 2026
 > Purpose: สำหรับให้ AI อ่านภาพรวมโค้ดและโครงสร้างอย่างรวดเร็ว
 
 ## 📂 CORE STRUCTURE
@@ -188,12 +188,16 @@
 ./app/blog/page.tsx
 ./app/contact
 ./app/contact/page.tsx
+./app/error.tsx
 ./app/globals.css
 ./app/kapoamom
 ./app/kapoamom/page.tsx
 ./app/layout.tsx
+./app/loading.tsx
+./app/manifest.ts
 ./app/menu
 ./app/menu/page.tsx
+./app/not-found.tsx
 ./app/page.tsx
 ./app/privacy
 ./app/privacy/page.tsx
@@ -297,6 +301,8 @@
 ./hooks/use-toast.ts
 ./knip.json
 ./lib
+./lib/api
+./lib/api/data.ts
 ./lib/utils.ts
 ./mdx-components.tsx
 ./next-env.d.ts
@@ -420,7 +426,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
   },
   // 🚀 FIXED: Advanced Webpack Configuration to handle Tailwind 4 CSS resolution issues in local environment
   webpack: (config) => {
@@ -768,7 +775,7 @@ export async function POST(req: Request) {
 
           // --- SPECIAL LOGIC: ADMIN RECOGNITION ---
           if (userId === ADMIN_USER_ID && userMessage === "status") {
-            const replyText = `[AEMDEVWEB SYSTEM STATUS]
+            const statusText = `[AEMDEVWEB SYSTEM STATUS]
 - Project: ${siteConfig.identity.name}
 - Domain: ${siteConfig.identity.url}
 - Engine: Next.js 16 (React 19)
@@ -776,23 +783,24 @@ export async function POST(req: Request) {
 - Developer: นายอลงกรณ์ ยมเกิด
 
 ระบบทำงานปกติ 100% ครับนายท่าน`;
-            return client.replyMessage(event.replyToken, { type: "text", text: replyText });
+            return client.replyMessage(event.replyToken, { type: "text", text: statusText });
           }
 
-          let replyText: string;
-          const quickReplyItems = {
+          let replyText = "";
+          const quickReplyItems: any = {
             items: [
-              { type: "action", action: { type: "message", label: "🍜 เมนูแนะนำ", text: "1" } },
-              { type: "action", action: { type: "message", label: "📍 พิกัดร้าน", text: "2" } },
-              { type: "action", action: { type: "message", label: "☎️ สั่งอาหาร", text: "3" } },
-              { type: "action", action: { type: "message", label: "🤝 จัดเลี้ยง", text: "4" } },
-              { type: "action", action: { type: "message", label: "🏠 เมนูหลัก", text: "0" } },
+              { type: "action", action: { type: "message", label: "🍜 เมนูและราคา", text: "1" } },
+              { type: "action", action: { type: "message", label: "📍 พิกัด/เวลาเปิด", text: "2" } },
+              { type: "action", action: { type: "message", label: "☎️ สั่งอาหารด่วน", text: "3" } },
+              { type: "action", action: { type: "message", label: "🤝 จัดเลี้ยง/ธุรกิจ", text: "4" } },
+              { type: "action", action: { type: "message", label: "💬 คุยกับเจ้าของร้าน", text: "5" } },
+              { type: "action", action: { type: "message", label: "🏠 หน้าแรก", text: "0" } },
             ],
           };
 
-          // --- LOGIC: NAVIGATION MENU (Keywords & Numbers) ---
+          // --- LOGIC: NAVIGATION MENU ---
           if (userMessage.includes("เมนู") || userMessage === "1") {
-            const messages: any[] = [
+            return client.replyMessage(event.replyToken, [
               {
                 type: "image",
                 originalContentUrl: `${siteConfig.identity.url}/images/signature-98-noodle.webp`,
@@ -800,17 +808,16 @@ export async function POST(req: Request) {
               },
               {
                 type: "text",
-                text: `[🍴 เมนูแนะนำ - ${siteConfig.identity.name}]\n\n🌟 บะหมี่ไข่ 98% นวดสดทุกวัน\n1. ${siteConfig.pricing.tiers[1].name} (${siteConfig.pricing.tiers[1].price})\n2. ${siteConfig.pricing.tiers[0].name} (${siteConfig.pricing.tiers[0].price})\n3. ${siteConfig.pricing.tiers[2].name} (${siteConfig.pricing.tiers[2].price})\n\nอร่อยระดับตำนาน 9 ปี เมืองตากครับ`,
-                quickReply: quickReplyItems
-              }
-            ];
-            return client.replyMessage(event.replyToken, messages);
+                text: `[🍴 เมนูแนะนำ - ${siteConfig.identity.name}]\n\n🌟 บะหมี่ไข่ 98% นวดสดทุกวัน\n1. ${siteConfig.pricing.tiers[1].name} (${siteConfig.pricing.tiers[1].price})\n2. ${siteConfig.pricing.tiers[0].name} (${siteConfig.pricing.tiers[0].price})\n3. ${siteConfig.pricing.tiers[2].name} (${siteConfig.pricing.tiers[2].price})\n\n🖼️ ดูเมนูเพิ่มเติม: ${siteConfig.identity.url}/menu`,
+                quickReply: quickReplyItems,
+              },
+            ]);
           } else if (
             userMessage.includes("พิกัด") ||
             userMessage.includes("ที่ตั้ง") ||
             userMessage === "2"
           ) {
-            const messages: any[] = [
+            return client.replyMessage(event.replyToken, [
               {
                 type: "image",
                 originalContentUrl: `${siteConfig.identity.url}/images/shop-atmosphere.webp`,
@@ -818,15 +825,18 @@ export async function POST(req: Request) {
               },
               {
                 type: "text",
-                text: `[📍 พิกัดและเวลาเปิดให้บริการ]\n\n🏠 ${siteConfig.contact.address}\n⏰ เปิด: ${siteConfig.contact.businessHours}\n\n🗺️ แผนที่ Google Maps:\n${siteConfig.contact.googleMaps}`,
-                quickReply: quickReplyItems
-              }
-            ];
-            return client.replyMessage(event.replyToken, messages);
+                text: `[📍 ข้อมูลร้านและการเดินทาง]\n\n🏠 ที่ตั้ง: ${siteConfig.contact.address}\n⏰ เปิด: ${siteConfig.contact.businessHours}\n\n🗺️ แผนที่ Google Maps:\n${siteConfig.contact.googleMaps}\n\nยินดีต้อนรับสู่ร้านลับเมืองตากครับ`,
+                quickReply: quickReplyItems,
+              },
+            ]);
           } else if (userMessage.includes("สั่ง") || userMessage === "3") {
-            replyText = `[☎️ บริการสั่งล่วงหน้า / สอบถามคิว]\n\nเบอร์โทรสายตรง:\n📞 ${siteConfig.contact.phone} (เฮียเนก/เจ๊ตั๊ก)\n\n💡 สั่งล่วงหน้า 15-20 นาที เพื่อความรวดเร็วครับ`;
-          } else if (userMessage.includes("จัดเลี้ยง") || userMessage === "4") {
-            const messages: any[] = [
+            replyText = `[☎️ บริการสั่งอาหารล่วงหน้า]\n\nเบอร์โทรสายตรง (เฮียเนก/เจ๊ตั๊ก):\n📞 ${siteConfig.contact.phone}\n\n⏱️ แนะนำสั่งล่วงหน้า 15-20 นาที\nเพื่อให้คุณได้รับบะหมี่ที่เหนียวหนึบที่สุดในเวลาที่คุณต้องการครับ`;
+          } else if (
+            userMessage.includes("จัดเลี้ยง") ||
+            userMessage.includes("ธุรกิจ") ||
+            userMessage === "4"
+          ) {
+            return client.replyMessage(event.replyToken, [
               {
                 type: "image",
                 originalContentUrl: `${siteConfig.identity.url}/images/kapoamom-sauce.webp`,
@@ -834,19 +844,16 @@ export async function POST(req: Request) {
               },
               {
                 type: "text",
-                text: `[🤝 บริการจัดเลี้ยงและธุรกิจ]\n\n✨ ${siteConfig.catering.title}\n📌 จุดเด่น: ${siteConfig.catering.highlights.join(", ")}\n\n🛍️ ซอสกะเพรา kapoamom:\n- สูตรลับ 9 ปี บรรจุขวด พร้อมส่งทั่วไทย\n\n📞 ปรึกษาธุรกิจ: ${siteConfig.contact.phone}`,
-                quickReply: quickReplyItems
-              }
-            ];
-            return client.replyMessage(event.replyToken, messages);
-          } else if (userMessage === "0") {
-            const greeting =
-              userId === ADMIN_USER_ID
+                text: `[🤝 บริการจัดเลี้ยงและแบรนด์ kapoamom]\n\n✨ ${siteConfig.catering.title}\n📌 จุดเด่น: ${siteConfig.catering.highlights.join(
+                  ", "
+                )}\n\n🛍️ ซอสกะเพราสูตรลับ 9 ปี:\nดูรายละเอียด: ${siteConfig.identity.url}/kapoamom\n\n📞 ปรึกษาธุรกิจ: ${siteConfig.contact.phone}`,
+                quickReply: quickReplyItems,
+              },
 ```
 
 ### File: app/blog/[slug]/page.tsx
 ```typescript
-import { blogRegistry } from "@/constants/blog-registry";
+import { getAllBlogs, getBlogBySlug, getSiteConfig } from "@/lib/api/data";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
@@ -863,29 +870,44 @@ interface BlogPageProps {
 }
 
 export async function generateStaticParams() {
-  return blogRegistry.map((blog) => ({
+  const blogs = await getAllBlogs();
+  return blogs.map((blog) => ({
     slug: blog.slug,
   }));
 }
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const blog = blogRegistry.find((b) => b.slug === slug);
+  const blog = await getBlogBySlug(slug);
+  const siteConfig = await getSiteConfig();
 
   if (!blog) return { title: "บทความไม่พบ" };
 
   return {
-    title: `${blog.title} | สาระน่ารู้ ช.สหชัย & AEMDEVWEB`,
+    title: blog.title,
     description: blog.excerpt,
+    alternates: {
+      canonical: `${siteConfig.identity.url}/blog/${slug}`,
+    },
     openGraph: {
-      images: ["/og-main.png"],
+      title: blog.title,
+      description: blog.excerpt,
+      url: `${siteConfig.identity.url}/blog/${slug}`,
+      images: [
+        {
+          url: `/images/${blog.image}`,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
     },
   };
 }
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
   const { slug } = await params;
-  const blog = blogRegistry.find((b) => b.slug === slug);
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     notFound();
@@ -931,21 +953,6 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
                   สรุปข้อมูลเพื่อคุณ
                 </p>
               </div>
-
-              <div className="dark:bg-card border-primary/5 flex flex-col justify-between rounded-[2rem] border bg-white p-6 shadow-sm">
-                <div className="mb-4 flex items-center justify-between">
-                  <BarChart3 className="text-secondary-foreground h-5 w-5" />
-                  <span className="text-secondary-foreground text-[10px] font-black uppercase">
-                    Expert Level
-                  </span>
-                </div>
-                <div className="text-2xl font-black tracking-tighter">ตำนาน 9 ปี</div>
-                <p className="text-muted-foreground mt-1 text-[10px] font-bold">จากประสบการณ์ตรง</p>
-              </div>
-
-              <div className="dark:bg-card border-primary/5 flex flex-col justify-between rounded-[2rem] border bg-white p-6 shadow-sm">
-                <div className="mb-4 flex items-center justify-between">
-                  <Zap className="h-5 w-5 text-amber-500" />
 ```
 
 ### File: app/blog/page.tsx
@@ -1154,6 +1161,69 @@ export default function ContactPage() {
                   referrerPolicy="no-referrer-when-downgrade"
                   className="absolute inset-0"
                 ></iframe>
+```
+
+### File: app/error.tsx
+```typescript
+"use client";
+
+import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { AlertTriangle, Home, RefreshCcw } from "lucide-react";
+
+export default function RootError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  useEffect(() => {
+    // Log error to an error reporting service like Sentry or Vercel
+    console.error("Critical System Error:", error);
+  }, [error]);
+
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center bg-[#FFFDF9] px-6 text-center">
+      <div className="bg-destructive/10 mb-8 flex h-24 w-24 items-center justify-center rounded-[2.5rem] text-destructive">
+        <AlertTriangle className="h-12 w-12" />
+      </div>
+      
+      <h1 className="mb-4 text-4xl font-black tracking-tighter text-[#4A3728]">
+        เกิดข้อผิดพลาดบางประการ
+      </h1>
+      
+      <p className="text-muted-foreground mx-auto mb-12 max-w-md text-lg font-medium">
+        ขออภัยในความไม่สะดวก ระบบพบปัญหาทางเทคนิคชั่วคราว <br />
+        กรุณาลองใหม่อีกครั้ง หรือกลับสู่หน้าหลักครับ
+      </p>
+
+      <div className="flex flex-col gap-4 sm:flex-row">
+        <Button
+          onClick={() => reset()}
+          variant="outline"
+          className="h-14 rounded-2xl border-[#4A3728]/10 px-8 text-lg font-bold"
+        >
+          <RefreshCcw className="mr-2 h-5 w-5" /> ลองใหม่อีกครั้ง
+        </Button>
+        
+        <Button
+          asChild
+          className="bg-primary h-14 rounded-2xl px-8 text-lg font-bold shadow-xl shadow-primary/20"
+        >
+          <Link href="/">
+            <Home className="mr-2 h-5 w-5" /> กลับสู่หน้าหลัก
+          </Link>
+        </Button>
+      </div>
+
+      <div className="mt-16 text-[10px] font-black uppercase tracking-[0.3em] text-[#4A3728]/30">
+        System Guard by AEMDEVWEB
+      </div>
+    </div>
+  );
+}
 ```
 
 ### File: app/globals.css
@@ -1380,6 +1450,9 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   viewportFit: "cover",
   themeColor: siteConfig.identity.themeColor,
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
@@ -1387,14 +1460,83 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": siteConfig.identity.name,
+    "image": [`${siteConfig.identity.url}${siteConfig.identity.ogImage}`],
+    "description": siteConfig.identity.description,
+    "url": siteConfig.identity.url,
+    "telephone": siteConfig.contact.phone,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "91/1 ถนนมหาดไทยบำรุง ต.หนองหลวง",
+      "addressLocality": "เมืองตาก",
+      "addressRegion": "ตาก",
+      "postalCode": "63000",
+      "addressCountry": "TH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 16.883,
+      "longitude": 99.123
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "10:30",
+      "closes": "21:00"
+    },
+    "servesCuisine": "Thai Noodle",
+    "priceRange": "฿",
+    "founder": {
+      "@type": "Person",
+      "name": "เฮียเนก (คุณชายบะหมี่)"
+    },
+    "author": {
+```
+
+### File: app/loading.tsx
+```typescript
+export default function RootLoading() {
   return (
-    <html lang="th" suppressHydrationWarning>
-      <body className="font-sans antialiased">
-        {children}
-        <Analytics />
-      </body>
-    </html>
+    <div className="flex min-h-screen items-center justify-center bg-[#FFFDF9]">
+      <div className="flex flex-col items-center gap-6">
+        <div className="h-16 w-16 animate-spin rounded-full border-t-4 border-b-4 border-[#b22222]"></div>
+        <div className="flex flex-col items-center animate-pulse">
+          <p className="text-xl font-black tracking-tighter text-[#b22222]">ช.สหชัย เกี๊ยวปูหมูแดง</p>
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#4A3728]/50">
+            Managed by AEMDEVWEB
+          </p>
+        </div>
+      </div>
+    </div>
   );
+}
+```
+
+### File: app/manifest.ts
+```typescript
+import { MetadataRoute } from "next";
+import { siteConfig } from "@/constants/site-config";
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: siteConfig.identity.fullName,
+    short_name: siteConfig.identity.name,
+    description: siteConfig.identity.description,
+    start_url: "/",
+    display: "standalone",
+    background_color: "#FFFDF9",
+    theme_color: siteConfig.identity.themeColor,
+    icons: [
+      {
+        src: "/favicon.ico",
+        sizes: "any",
+        type: "image/x-icon",
+      },
+    ],
+  };
 }
 ```
 
@@ -1500,6 +1642,59 @@ export default function MenuPage() {
       </main>
 
       <FooterSection />
+```
+
+### File: app/not-found.tsx
+```typescript
+import { Navigation } from "@/components/layout/Header";
+import { FooterSection } from "@/components/layout/Footer";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { SearchX, Home, ArrowLeft } from "lucide-react";
+
+export default function NotFound() {
+  return (
+    <div className="flex min-h-screen flex-col bg-[#FFFDF9]">
+      <Navigation />
+      <main className="flex flex-grow flex-col items-center justify-center px-6 text-center pt-20">
+        <div className="bg-primary/5 mb-8 flex h-32 w-32 items-center justify-center rounded-[3rem] text-primary">
+          <SearchX className="h-16 w-16" />
+        </div>
+        
+        <h1 className="mb-4 text-5xl font-black tracking-tighter text-[#4A3728] md:text-7xl">
+          ไม่พบหน้าที่ต้องการ
+        </h1>
+        
+        <p className="text-muted-foreground mx-auto mb-12 max-w-md text-lg font-medium">
+          ขออภัยครับ ดูเหมือนว่าหน้าที่คุณกำลังตามหาจะไม่มีอยู่จริง <br />
+          หรืออาจถูกย้ายไปที่อื่นแล้ว แวะทานบะหมี่ก่อนไหมครับ?
+        </p>
+
+        <div className="flex flex-col gap-4 sm:flex-row">
+          <Button
+            asChild
+            variant="outline"
+            className="h-14 rounded-2xl border-[#4A3728]/10 px-8 text-lg font-bold"
+          >
+            <Link href="javascript:history.back()">
+              <ArrowLeft className="mr-2 h-5 w-5" /> ย้อนกลับ
+            </Link>
+          </Button>
+          
+          <Button
+            asChild
+            className="bg-primary h-14 rounded-2xl px-8 text-lg font-bold shadow-xl shadow-primary/20"
+          >
+            <Link href="/">
+              <Home className="mr-2 h-5 w-5" /> กลับหน้าหลัก
+            </Link>
+          </Button>
+        </div>
+      </main>
+      <FooterSection />
+    </div>
+  );
+}
 ```
 
 ### File: app/page.tsx
@@ -1719,8 +1914,8 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
-      disallow: ["/api/", "/_next/"],
+      allow: ["/", "/_next/static/", "/_next/image/"],
+      disallow: ["/api/"],
     },
     sitemap: `${siteConfig.identity.url}/sitemap.xml`,
   };
@@ -1935,6 +2130,8 @@ export function HeroSection() {
           fill
           className="scale-105 object-cover opacity-20"
           priority
+          sizes="100vw"
+          quality={75}
         />
         <div className="from-background to-background absolute inset-0 bg-gradient-to-b via-transparent" />
       </div>
@@ -2013,7 +2210,6 @@ export function HeroSection() {
       <div className="from-background absolute right-0 bottom-0 left-0 h-32 bg-gradient-to-t to-transparent" />
     </section>
   );
-}
 ```
 
 ### File: components/home/KnowledgeCorner.tsx
@@ -2342,7 +2538,7 @@ export function ReviewCarousel() {
 
         <div className="cursor-grab overflow-hidden active:cursor-grabbing" ref={emblaRef}>
           <div className="-ml-6 flex">
-            {customerReviews.map((review) => (
+            {customerReviews.slice(0, 12).map((review) => (
               <div
                 key={review.id}
                 className="flex-[0_0_100%] pl-6 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
@@ -6690,6 +6886,39 @@ export const reducer = (state: State, action: Action): State => {
         });
       }
 
+```
+
+### File: lib/api/data.ts
+```typescript
+import { cache } from "react";
+import { blogRegistry, BlogEntry } from "@/constants/blog-registry";
+import { siteConfig } from "@/constants/site-config";
+
+/**
+ * @file lib/api/data.ts
+ * @description Advanced Data Access Layer using React cache for optimal performance.
+ * This acts as the Single Source of Truth for fetching application data.
+ */
+
+// 1. Fetch all blog posts (Cached)
+export const getAllBlogs = cache(async (): Promise<BlogEntry[]> => {
+  return blogRegistry;
+});
+
+// 2. Fetch single blog post by slug (Cached)
+export const getBlogBySlug = cache(async (slug: string): Promise<BlogEntry | undefined> => {
+  return blogRegistry.find((blog) => blog.slug === slug);
+});
+
+// 3. Get Site Configuration (Cached)
+export const getSiteConfig = cache(async () => {
+  return siteConfig;
+});
+
+// 4. Get Featured Content (Example of filtered data fetching)
+export const getFeaturedBlogs = cache(async (limit = 3): Promise<BlogEntry[]> => {
+  return blogRegistry.slice(0, limit);
+});
 ```
 
 ### File: lib/utils.ts

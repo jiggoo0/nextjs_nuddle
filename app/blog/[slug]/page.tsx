@@ -1,4 +1,4 @@
-import { blogRegistry } from "@/constants/blog-registry";
+import { getAllBlogs, getBlogBySlug, getSiteConfig } from "@/lib/api/data";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
@@ -15,29 +15,44 @@ interface BlogPageProps {
 }
 
 export async function generateStaticParams() {
-  return blogRegistry.map((blog) => ({
+  const blogs = await getAllBlogs();
+  return blogs.map((blog) => ({
     slug: blog.slug,
   }));
 }
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const blog = blogRegistry.find((b) => b.slug === slug);
+  const blog = await getBlogBySlug(slug);
+  const siteConfig = await getSiteConfig();
 
   if (!blog) return { title: "บทความไม่พบ" };
 
   return {
-    title: `${blog.title} | สาระน่ารู้ ช.สหชัย & AEMDEVWEB`,
+    title: blog.title,
     description: blog.excerpt,
+    alternates: {
+      canonical: `${siteConfig.identity.url}/blog/${slug}`,
+    },
     openGraph: {
-      images: ["/og-main.png"],
+      title: blog.title,
+      description: blog.excerpt,
+      url: `${siteConfig.identity.url}/blog/${slug}`,
+      images: [
+        {
+          url: `/images/${blog.image}`,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
     },
   };
 }
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
   const { slug } = await params;
-  const blog = blogRegistry.find((b) => b.slug === slug);
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     notFound();

@@ -64,11 +64,55 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": siteConfig.identity.name,
+    "image": [`${siteConfig.identity.url}${siteConfig.identity.ogImage}`],
+    "description": siteConfig.identity.description,
+    "url": siteConfig.identity.url,
+    "telephone": siteConfig.contact.phone,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "91/1 ถนนมหาดไทยบำรุง ต.หนองหลวง",
+      "addressLocality": "เมืองตาก",
+      "addressRegion": "ตาก",
+      "postalCode": "63000",
+      "addressCountry": "TH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 16.883,
+      "longitude": 99.123
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "10:30",
+      "closes": "21:00"
+    },
+    "servesCuisine": "Thai Noodle",
+    "priceRange": "฿",
+    "founder": {
+      "@type": "Person",
+      "name": "เฮียเนก (คุณชายบะหมี่)"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "AEMDEVWEB",
+      "url": "https://www.aemdevweb.com"
+    }
+  };
+
   return (
     <html lang="th" suppressHydrationWarning className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="font-sans antialiased">
         {children}
