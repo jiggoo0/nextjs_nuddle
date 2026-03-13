@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, ChevronRight, BookOpen } from "lucide-react";
 import fs from "fs";
 import path from "path";
@@ -16,7 +17,6 @@ export const metadata: Metadata = {
   description: "รวบรวมบทความที่มีประโยชน์ ข่าวสารจังหวัดตาก และเคล็ดลับความอร่อยจากร้าน ช.สหชัย เกี๊ยวปูหมูแดง",
 };
 
-// ฟังก์ชันดึงบทความทั้งหมดจาก MDX Files
 function getAllBlogs() {
   const contentDir = path.join(process.cwd(), "content/blog");
   const files = fs.readdirSync(contentDir);
@@ -71,27 +71,37 @@ export default function BlogListingPage() {
               <AnimatedSection key={blog.slug} delay={idx * 0.1}>
                 <Link href={`/blog/${blog.slug}`} className="group">
                   <Card className="rounded-[3rem] overflow-hidden border border-border bg-card hover:shadow-2xl transition-all duration-500 h-full flex flex-col group-hover:-translate-y-2">
-                    <CardContent className="p-8 flex flex-col h-full">
-                      <div className="flex items-center justify-between mb-6">
-                        <Badge className="bg-secondary/20 text-secondary-foreground border-none font-bold">
+                    {/* BLOG IMAGE ADDED HERE */}
+                    <div className="relative h-64 w-full overflow-hidden">
+                      <Image 
+                        src={`/images/${blog.image}`} 
+                        alt={blog.title} 
+                        fill 
+                        className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                      />
+                      <div className="absolute top-6 left-6">
+                        <Badge className="bg-white/90 backdrop-blur-md text-primary border-none font-bold shadow-lg">
                           {blog.category}
                         </Badge>
-                        <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground">
-                          <Calendar className="w-3.5 h-3.5 text-primary" />
-                          <span>{blog.date}</span>
-                        </div>
+                      </div>
+                    </div>
+
+                    <CardContent className="p-8 flex flex-col h-full">
+                      <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground mb-4">
+                        <Calendar className="w-3.5 h-3.5 text-primary" />
+                        <span>{blog.date}</span>
                       </div>
                       
-                      <h3 className="text-2xl font-black tracking-tight mb-4 group-hover:text-primary transition-colors leading-tight">
+                      <h3 className="text-2xl font-black tracking-tight mb-4 group-hover:text-primary transition-colors leading-tight line-clamp-2">
                         {blog.title}
                       </h3>
                       
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-grow">
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-grow line-clamp-3">
                         {blog.excerpt}
                       </p>
                       
-                      <div className="flex items-center gap-2 text-primary font-black uppercase tracking-widest text-xs mt-auto">
-                        อ่านบทความ <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      <div className="flex items-center gap-2 text-primary font-black uppercase tracking-widest text-[10px] mt-auto">
+                        อ่านบทความฉบับเต็ม <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                       </div>
                     </CardContent>
                   </Card>
@@ -100,7 +110,7 @@ export default function BlogListingPage() {
             ))}
           </div>
 
-          <div className="mt-24 p-12 bg-primary text-white rounded-[4rem] text-center shadow-2xl shadow-primary/20 relative overflow-hidden">
+          <div className="mt-24 p-12 bg-primary text-white rounded-[4rem] text-center shadow-2xl shadow-primary/30 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32" />
             <BookOpen className="w-12 h-12 mx-auto mb-6 opacity-50" />
             <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight text-white">ต้องการรับเหมาจัดเลี้ยง?</h2>
