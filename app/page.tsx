@@ -118,10 +118,10 @@ export default function Home() {
                 <Badge className="bg-primary/10 text-primary border-none px-4 py-1 rounded-full font-bold uppercase tracking-widest">
                   บันทึกความทรงจำ
                 </Badge>
-                <h2 className="text-4xl md:text-5xl font-black tracking-tighter">บรรยากาศความอบอุ่น</h2>
+                <h2 className="text-4xl md:text-5xl font-black tracking-tighter">แวะมาดูบรรยากาศร้านเราสิครับ</h2>
               </div>
               <Link href="/about" className="text-primary font-bold hover:underline flex items-center gap-2 mb-2 mx-auto md:mx-0">
-                อ่านเรื่องราว 9 ปี ของเรา <ChevronDown className="w-4 h-4 -rotate-90" />
+                อ่านเรื่องราวสนุกๆ ของเรา <ChevronDown className="w-4 h-4 -rotate-90" />
               </Link>
             </div>
 
@@ -153,9 +153,9 @@ export default function Home() {
               <div className="lg:w-1/2 space-y-10">
                 <div className="space-y-4 text-center lg:text-left">
                   <Badge className="bg-primary/10 text-primary border-none px-4 py-1 rounded-full font-bold">
-                    พิกัดความอร่อย
+                    หิวเมื่อไหร่ แวะมาเลย
                   </Badge>
-                  <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-center lg:text-left">แวะมาทักทาย <br /><span className="text-primary font-serif italic text-center lg:text-left">เฮียเนก & เจ๊ตั๊ก</span></h2>
+                  <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-center lg:text-left">แวะมาฝากท้องกับ <br /><span className="text-primary font-serif italic text-center lg:text-left">เฮียเนก & เจ๊ตั๊ก</span></h2>
                 </div>
 
                 <div className="space-y-8">

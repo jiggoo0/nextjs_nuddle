@@ -173,7 +173,7 @@ export default function AboutPage() {
                 คือรางวัลที่แท้จริง
               </h2>
               <p className="text-2xl text-muted-foreground leading-relaxed font-medium max-w-3xl mx-auto italic">
-                "เกียรติยศวัดกันที่คนรัก ปากท้องวัดกันที่ฝีมือ และความสุขวัดกันที่ความสำเร็จของคนในครอบครัว... ขอบคุณทุกชามที่ทำให้เรามีวันนี้"
+                "ไม่ว่าจะสวมชุดอะไร ตำแหน่งไหน เดินเข้ามาในร้านเราคือพี่น้องกันหมด... ขอบคุณทุกชามที่ทำให้เรามีวันนี้ครับ"
               </p>
               <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-4">
                 <div className="text-center">

@@ -5,9 +5,10 @@ import "./globals.css";
 import { siteConfig } from "@/constants/site-config";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.identity.url),
   title: siteConfig.identity.name,
   description: siteConfig.identity.description,
-  keywords: ["ช.สหชัย", "เกี๊ยวปูหมูแดง ตาก", "นายอเนก ยมเกิด", "เฮียเนก", "นางนัชรินทร์ ยมเกิด", "เจ๊ตั๊ก", "ร้านอาหารจังหวัดตาก"],
+  keywords: siteConfig.identity.keywords,
   authors: [{ name: "Alogkorn Yomkerd (AEMZA MAX)", url: "https://www.me.aemdevweb.com" }],
   creator: "AEMDEVWEB - www.aemdevweb.com",
   publisher: "นายอลงกรณ์ ยมเกิด (Alogkorn Yomkerd)",
