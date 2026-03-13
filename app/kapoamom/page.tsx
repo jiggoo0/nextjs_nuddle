@@ -30,7 +30,7 @@ export default function KapoamomPage() {
       <main className="flex-grow pt-24">
         {/* HERO SECTION */}
         <section className="relative py-20 md:py-32 overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/hero-bg-texture.png')] opacity-5" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/hero-bg-texture.webp')] opacity-10 bg-repeat bg-center" />
           <div className="container mx-auto px-6 relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <AnimatedSection className="space-y-8 text-center lg:text-left">
@@ -122,8 +122,8 @@ export default function KapoamomPage() {
               <AnimatedSection className="relative order-2 lg:order-1">
                 <div className="relative rounded-[3.5rem] overflow-hidden shadow-2xl border-[12px] border-white aspect-[4/5]">
                   <Image 
-                    src="/images/signature-98-noodle.webp" 
-                    alt="ขั้นตอนการปรุงซอสกะเพรา" 
+                    src="/images/kapoamom-action.webp" 
+                    alt="ขั้นตอนการปรุงซอสกะเพราฝีมือแม่" 
                     fill 
                     className="object-cover"
                   />
