@@ -6,6 +6,7 @@ import { FooterSection } from "@/components/layout/Footer";
 import { MenuHighlights } from "@/components/home/MenuHighlights";
 import { ReviewCarousel } from "@/components/home/Testimonials";
 import { KnowledgeCorner } from "@/components/home/KnowledgeCorner";
+import { ProductTeaser } from "@/components/home/ProductTeaser";
 import { AnimatedSection } from "@/components/animated-section";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Phone, Clock, Quote, ChevronDown } from "lucide-react";
@@ -35,7 +36,7 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row gap-20 items-center">
               <div className="lg:w-1/2 relative">
                 <div className="absolute -top-10 -left-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl opacity-50 animate-pulse" />
-                <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-[16px] border-white rotate-2 hover:rotate-0 transition-transform duration-700 aspect-[4/5]">
+                <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white rotate-2 hover:rotate-0 transition-transform duration-700 aspect-[4/5]">
                   <Image 
                     src="/images/blog-noodle-1.webp" 
                     alt="ความเหนียวหนึบของเส้นบะหมี่ไข่ 98%" 
@@ -100,13 +101,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. REAL CUSTOMER REVIEWS */}
+        {/* 4. PRODUCT TEASER (NEW!) - ซอสกะเพราของดีจังหวัดตาก */}
+        <ProductTeaser />
+
+        {/* 5. REAL CUSTOMER REVIEWS */}
         <ReviewCarousel />
 
-        {/* 5. SERVICES & KNOWLEDGE CORNER (NEW!) */}
+        {/* 6. SERVICES & KNOWLEDGE CORNER */}
         <KnowledgeCorner />
 
-        {/* 6. MOMENTS OF JOY */}
+        {/* 7. MOMENTS OF JOY */}
         <section id="gallery" className="py-32 bg-background">
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
@@ -142,7 +146,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 7. VISIT US */}
+        {/* 8. VISIT US */}
         <section id="contact" className="py-32 bg-primary/5 border-t border-primary/10">
           <div className="container mx-auto px-6">
             <div className="bg-white rounded-[4rem] p-12 lg:p-20 shadow-2xl border border-primary/5 flex flex-col lg:flex-row gap-16 items-center">
