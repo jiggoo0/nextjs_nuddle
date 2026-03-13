@@ -48,70 +48,61 @@ export async function POST(req: Request) {
 
           // --- LOGIC: NAVIGATION MENU (Keywords & Numbers) ---
           if (userMessage.includes("เมนู") || userMessage === "1") {
-            replyText = `[🍴 เมนูแนะนำระดับตำนาน - ${siteConfig.identity.name}]
-
-🌟 เมนูขายดี (Must Try):
-1. ${siteConfig.pricing.tiers[1].name} (${siteConfig.pricing.tiers[1].price})
-   - บะหมี่ไข่ 98% นวดสดใหม่ทุกวัน
-2. ${siteConfig.pricing.tiers[0].name} (${siteConfig.pricing.tiers[0].price})
-3. ${siteConfig.pricing.tiers[2].name} (${siteConfig.pricing.tiers[2].price})
-
-🖼️ ดูภาพเมนูและราคาอย่างละเอียดได้ที่:
-${siteConfig.identity.url}/menu
-
-(ความอร่อยที่ส่งต่อมานานกว่า 9 ปี)`;
+            const messages: any[] = [
+              {
+                type: "image",
+                originalContentUrl: `${siteConfig.identity.url}/images/signature-98-noodle.webp`,
+                previewImageUrl: `${siteConfig.identity.url}/images/signature-98-noodle.webp`,
+              },
+              {
+                type: "text",
+                text: `[🍴 เมนูแนะนำ - ${siteConfig.identity.name}]\n\n🌟 บะหมี่ไข่ 98% นวดสดทุกวัน\n1. ${siteConfig.pricing.tiers[1].name} (${siteConfig.pricing.tiers[1].price})\n2. ${siteConfig.pricing.tiers[0].name} (${siteConfig.pricing.tiers[0].price})\n3. ${siteConfig.pricing.tiers[2].name} (${siteConfig.pricing.tiers[2].price})\n\nอร่อยระดับตำนาน 9 ปี เมืองตากครับ`,
+                quickReply: quickReplyItems
+              }
+            ];
+            return client.replyMessage(event.replyToken, messages);
           } else if (
             userMessage.includes("พิกัด") ||
             userMessage.includes("ที่ตั้ง") ||
             userMessage === "2"
           ) {
-            replyText = `[📍 ข้อมูลร้านและการเดินทาง]
-
-🏠 ที่ตั้ง: ${siteConfig.contact.address}
-⏰ เวลาเปิด: ${siteConfig.contact.businessHours}
-🚫 หยุดทุกวันอาทิตย์
-
-🗺️ แผนที่นำทาง (Google Maps):
-${siteConfig.contact.googleMaps}
-
-ยินดีต้อนรับทุกท่านครับ`;
+            const messages: any[] = [
+              {
+                type: "image",
+                originalContentUrl: `${siteConfig.identity.url}/images/shop-atmosphere.webp`,
+                previewImageUrl: `${siteConfig.identity.url}/images/shop-atmosphere.webp`,
+              },
+              {
+                type: "text",
+                text: `[📍 พิกัดและเวลาเปิดให้บริการ]\n\n🏠 ${siteConfig.contact.address}\n⏰ เปิด: ${siteConfig.contact.businessHours}\n\n🗺️ แผนที่ Google Maps:\n${siteConfig.contact.googleMaps}`,
+                quickReply: quickReplyItems
+              }
+            ];
+            return client.replyMessage(event.replyToken, messages);
           } else if (userMessage.includes("สั่ง") || userMessage === "3") {
-            replyText = `[☎️ บริการสั่งล่วงหน้า / สอบถามคิว]
-
-เบอร์โทรสายตรง:
-📞 ${siteConfig.contact.phone} (เฮียเนก/เจ๊ตั๊ก)
-
-💡 หลักการสั่งให้อร่อยที่สุด:
-- สั่งล่วงหน้า 15-20 นาที
-- ระบุเส้น/ความต้องการพิเศษได้ทันที
-- รับอาหารแล้วแนะนำให้ทานร้อนๆ จะหนึบที่สุดครับ`;
+            replyText = `[☎️ บริการสั่งล่วงหน้า / สอบถามคิว]\n\nเบอร์โทรสายตรง:\n📞 ${siteConfig.contact.phone} (เฮียเนก/เจ๊ตั๊ก)\n\n💡 สั่งล่วงหน้า 15-20 นาที เพื่อความรวดเร็วครับ`;
           } else if (userMessage.includes("จัดเลี้ยง") || userMessage === "4") {
-            replyText = `[🤝 บริการสำหรับธุรกิจและจัดเลี้ยง]
-
-✨ ${siteConfig.catering.title}
-เหมาะสำหรับงานบุญ, งานแต่ง, ประชุมสัมมนา
-
-📌 จุดเด่นบริการ: ${siteConfig.catering.highlights.join(", ")}
-
-🛍️ สนใจแบรนด์ซอสกะเพรา kapoamom:
-- สูตรลับ 9 ปี บรรจุขวด พร้อมส่งทั่วไทย
-- ดูรายละเอียด: ${siteConfig.identity.url}/kapoamom
-
-📞 ปรึกษาเรื่องจัดเลี้ยง/ธุรกิจ:
-โทร ${siteConfig.contact.phone}`;
+            const messages: any[] = [
+              {
+                type: "image",
+                originalContentUrl: `${siteConfig.identity.url}/images/kapoamom-sauce.webp`,
+                previewImageUrl: `${siteConfig.identity.url}/images/kapoamom-sauce.webp`,
+              },
+              {
+                type: "text",
+                text: `[🤝 บริการจัดเลี้ยงและธุรกิจ]\n\n✨ ${siteConfig.catering.title}\n📌 จุดเด่น: ${siteConfig.catering.highlights.join(", ")}\n\n🛍️ ซอสกะเพรา kapoamom:\n- สูตรลับ 9 ปี บรรจุขวด พร้อมส่งทั่วไทย\n\n📞 ปรึกษาธุรกิจ: ${siteConfig.contact.phone}`,
+                quickReply: quickReplyItems
+              }
+            ];
+            return client.replyMessage(event.replyToken, messages);
           } else if (userMessage === "0") {
             const greeting =
               userId === ADMIN_USER_ID
                 ? "สวัสดีครับ นายท่านอลงกรณ์"
                 : `สวัสดีครับ ${siteConfig.identity.name} ยินดีให้บริการครับ`;
-            replyText = `${greeting}
-ตำนานบะหมี่เมืองตาก 9 ปี
-
-กรุณาเลือกบริการที่ท่านต้องการครับ 👇`;
+            replyText = `${greeting}\nตำนานบะหมี่เมืองตาก 9 ปี\n\nกรุณาเลือกบริการที่ท่านต้องการครับ 👇`;
           } else {
-            replyText = `ขออภัยครับ ระบบไม่เข้าใจคำสั่งนี้ 🙏
-
-กรุณาเลือกกดปุ่มเมนูที่แถบด้านล่าง หรือเลือกจากตัวเลือกต่อไปนี้ครับ 👇`;
+            replyText = `ขออภัยครับ ระบบไม่เข้าใจคำสั่งนี้ 🙏\n\nกรุณาเลือกกดปุ่มเมนูที่แถบด้านล่างครับ 👇`;
           }
 
           return client.replyMessage(event.replyToken, {
