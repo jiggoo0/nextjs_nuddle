@@ -85,11 +85,17 @@ export function FooterSection() {
           </div>
         </div>
 
-        <div className="border-border mt-16 flex flex-col items-center justify-between gap-4 border-t pt-8 md:flex-row">
-          <p className="text-muted-foreground text-[10px] tracking-widest uppercase">
-            © {new Date().getFullYear()} {identity.name}. สงวนลิขสิทธิ์. พัฒนาโดย AEMDEVWEB.
-          </p>
-          <div className="flex gap-6">
+        <div className="border-border mt-16 flex flex-col items-center justify-between gap-6 border-t pt-8 md:flex-row">
+          <div className="text-center md:text-left">
+            <p className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase mb-1">
+              © {new Date().getFullYear()} {identity.name}. สงวนลิขสิทธิ์.
+            </p>
+            <p className="text-muted-foreground/60 text-[9px] leading-relaxed">
+              Chef & Founder: นายอเนก ยมเกิด (เฮียเนก) & นางนัชรินทร์ ยมเกิด (เจ๊ตั๊ก) <br />
+              Digital Heritage & Strategy by <Link href="https://www.aemdevweb.com" target="_blank" className="hover:text-primary font-bold">AEMDEVWEB</Link>
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-6">
             <Link
               href="/privacy"
               className="text-muted-foreground hover:text-foreground text-[10px] tracking-widest uppercase transition-colors"
