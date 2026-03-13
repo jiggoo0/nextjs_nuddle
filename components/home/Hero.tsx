@@ -9,28 +9,28 @@ export function HeroSection() {
   const { hero } = siteConfig;
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-background">
+    <section className="bg-background relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
       {/* Background Story Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/founders-warmth.webp"
           alt="เบื้องหลังความอร่อย ช.สหชัย"
           fill
-          className="object-cover opacity-20 scale-105"
+          className="scale-105 object-cover opacity-20"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        <div className="from-background to-background absolute inset-0 bg-gradient-to-b via-transparent" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 text-center max-w-4xl">
+      <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-2 bg-primary/5 rounded-full px-6 py-2 mb-8 border border-primary/10"
+          className="bg-primary/5 border-primary/10 mb-8 inline-flex items-center gap-2 rounded-full border px-6 py-2"
         >
-          <Heart className="w-4 h-4 text-primary animate-pulse" />
-          <span className="text-primary text-xs font-bold uppercase tracking-[0.2em]">
+          <Heart className="text-primary h-4 w-4 animate-pulse" />
+          <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase">
             {hero.badge}
           </span>
         </motion.div>
@@ -39,19 +39,17 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-5xl md:text-8xl font-black text-foreground mb-8 tracking-tighter leading-[0.95]"
+          className="text-foreground mb-8 text-5xl leading-[0.95] font-black tracking-tighter md:text-8xl"
         >
           {hero.headlineLine1} <br />
-          <span className="text-primary italic font-serif">
-            {hero.headlineLine2}
-          </span>
+          <span className="text-primary font-serif italic">{hero.headlineLine2}</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed font-medium"
+          className="text-muted-foreground mx-auto mb-12 max-w-2xl text-xl leading-relaxed font-medium md:text-2xl"
         >
           {hero.description}
         </motion.p>
@@ -60,38 +58,42 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+          className="flex flex-col items-center justify-center gap-6 sm:flex-row"
         >
           <a
             href="#menu"
-            className="group relative inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-10 py-5 rounded-[2rem] text-lg font-bold shadow-2xl shadow-primary/30 hover:bg-primary/90 transition-all hover:-translate-y-1 active:scale-95"
+            className="group bg-primary text-primary-foreground shadow-primary/30 hover:bg-primary/90 relative inline-flex items-center justify-center gap-3 rounded-[2rem] px-10 py-5 text-lg font-bold shadow-2xl transition-all hover:-translate-y-1 active:scale-95"
           >
-            <Utensils className="w-5 h-5 transition-transform group-hover:rotate-12" />
+            <Utensils className="h-5 w-5 transition-transform group-hover:rotate-12" />
             ลิ้มลองความอร่อย
           </a>
           <a
             href="#contact"
-            className="text-foreground font-bold hover:text-primary transition-colors flex items-center gap-2"
+            className="text-foreground hover:text-primary flex items-center gap-2 font-bold transition-colors"
           >
-            เส้นทางมาร้าน <ChevronDown className="w-4 h-4 animate-bounce mt-1" />
+            เส้นทางมาร้าน <ChevronDown className="mt-1 h-4 w-4 animate-bounce" />
           </a>
         </motion.div>
 
         {/* Floating elements */}
-        <motion.div 
+        <motion.div
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -left-10 top-1/2 hidden lg:block"
+          className="absolute top-1/2 -left-10 hidden lg:block"
         >
-          <div className="bg-white/80 backdrop-blur-xl p-6 rounded-[2.5rem] shadow-xl border border-primary/5 flex flex-col items-center">
-            <span className="text-3xl font-black text-primary">9</span>
-            <span className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground text-center">ปีแห่งการ<br/>สั่งสมวิชา</span>
+          <div className="border-primary/5 flex flex-col items-center rounded-[2.5rem] border bg-white/80 p-6 shadow-xl backdrop-blur-xl">
+            <span className="text-primary text-3xl font-black">9</span>
+            <span className="text-muted-foreground text-center text-[10px] font-bold tracking-widest uppercase">
+              ปีแห่งการ
+              <br />
+              สั่งสมวิชา
+            </span>
           </div>
         </motion.div>
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      <div className="from-background absolute right-0 bottom-0 left-0 h-32 bg-gradient-to-t to-transparent" />
     </section>
   );
 }

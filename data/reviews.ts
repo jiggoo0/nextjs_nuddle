@@ -19,7 +19,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-01",
     name: "คุณวิทวัส",
     location: "คนเมืองตาก",
-    comment: "กินมาตั้งแต่เปิดร้านแรกๆ จนตอนนี้รสชาติไม่เคยเปลี่ยนเลยครับ เส้นบะหมี่นุ่มมาก เกี๊ยวปูคือที่สุด",
+    comment:
+      "กินมาตั้งแต่เปิดร้านแรกๆ จนตอนนี้รสชาติไม่เคยเปลี่ยนเลยครับ เส้นบะหมี่นุ่มมาก เกี๊ยวปูคือที่สุด",
     rating: 5,
     date: "มกราคม 2568",
     avatarInitials: "ว",
@@ -29,7 +30,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-02",
     name: "Ploy P.",
     location: "นักท่องเที่ยวจาก กทม.",
-    comment: "ขับรถผ่านสะพานกิตติขจรเห็นคนเยอะเลยแวะลอง ไม่ผิดหวังเลยค่ะ ปูสดจริง เครื่องแน่นจนจุก แนะนำมาก",
+    comment:
+      "ขับรถผ่านสะพานกิตติขจรเห็นคนเยอะเลยแวะลอง ไม่ผิดหวังเลยค่ะ ปูสดจริง เครื่องแน่นจนจุก แนะนำมาก",
     rating: 5,
     date: "กุมภาพันธ์ 2568",
     avatarInitials: "PP",
@@ -39,7 +41,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-03",
     name: "เฮียหมู สายกิน",
     location: "กำแพงเพชร",
-    comment: "หมูแดงที่นี่หอมมากครับ น้ำราดรสชาติกำลังดี ไม่หวานโดด แนะนำบะหมี่แห้งต้มยำครับ เด็ดขาดจริงๆ",
+    comment:
+      "หมูแดงที่นี่หอมมากครับ น้ำราดรสชาติกำลังดี ไม่หวานโดด แนะนำบะหมี่แห้งต้มยำครับ เด็ดขาดจริงๆ",
     rating: 5,
     date: "มีนาคม 2568",
     avatarInitials: "ห",
@@ -49,7 +52,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-04",
     name: "น้าต๋อย",
     location: "ขาประจำเมืองตาก",
-    comment: "เจ๊ตั๊กใจดีมากครับ บางวันแถมซุปกระดูกมาให้ซดด้วย บรรยากาศเป็นกันเองสุดๆ เหมือนกินข้าวบ้าน",
+    comment:
+      "เจ๊ตั๊กใจดีมากครับ บางวันแถมซุปกระดูกมาให้ซดด้วย บรรยากาศเป็นกันเองสุดๆ เหมือนกินข้าวบ้าน",
     rating: 5,
     date: "เมษายน 2568",
     avatarInitials: "ต",
@@ -59,7 +63,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-05",
     name: "Somsak K.",
     location: "พิษณุโลก",
-    comment: "คุ้มค่าราคามากครับ มาตากทีไรต้องแวะตลอด ลูกชายชอบทานเกี๊ยวหมูที่นี่มาก แป้งบางไส้แน่น",
+    comment:
+      "คุ้มค่าราคามากครับ มาตากทีไรต้องแวะตลอด ลูกชายชอบทานเกี๊ยวหมูที่นี่มาก แป้งบางไส้แน่น",
     rating: 5,
     date: "พฤษภาคม 2568",
     avatarInitials: "S",
@@ -79,7 +84,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-07",
     name: "Jack Traveler",
     location: "Travel Blogger",
-    comment: "Street Food เมืองตากที่ห้ามพลาด ความใส่ใจของเจ้าของร้านสะท้อนออกมาในรสชาติอาหารครับ พรีเมียมมาก",
+    comment:
+      "Street Food เมืองตากที่ห้ามพลาด ความใส่ใจของเจ้าของร้านสะท้อนออกมาในรสชาติอาหารครับ พรีเมียมมาก",
     rating: 5,
     date: "กรกฎาคม 2568",
     avatarInitials: "J",
@@ -109,7 +115,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-10",
     name: "คุณแม่ลูกสอง",
     location: "แม่บ้านเมืองตาก",
-    comment: "ลูกๆ ชอบกินมากค่ะ สั่งกลับบ้านประจำ หมูแดงนุ่มเด็กกินง่าย น้ำซุปหวานธรรมชาติไม่เค็มเกิน",
+    comment:
+      "ลูกๆ ชอบกินมากค่ะ สั่งกลับบ้านประจำ หมูแดงนุ่มเด็กกินง่าย น้ำซุปหวานธรรมชาติไม่เค็มเกิน",
     rating: 5,
     date: "ตุลาคม 2568",
     avatarInitials: "ม",
@@ -119,7 +126,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-11",
     name: "Anuchit S.",
     location: "ขอนแก่น",
-    comment: "ตามรีวิวมาจากวงใน ไม่ผิดหวังครับ หมูกรอบคือดีงาม หนังบางกรอบจริง น้ำราดก็รสชาติดีครับ",
+    comment:
+      "ตามรีวิวมาจากวงใน ไม่ผิดหวังครับ หมูกรอบคือดีงาม หนังบางกรอบจริง น้ำราดก็รสชาติดีครับ",
     rating: 5,
     date: "พฤศจิกายน 2568",
     avatarInitials: "A",
@@ -149,7 +157,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-14",
     name: "ป้าอ้อย",
     location: "คนเมืองตาก",
-    comment: "ร้านนี้เขาทำบะหมี่เองนะลูก เส้นมันจะหอมไข่กว่าร้านอื่น เยอะด้วยอิ่มแน่นอน ป้ากินมาหลายปีแล้ว",
+    comment:
+      "ร้านนี้เขาทำบะหมี่เองนะลูก เส้นมันจะหอมไข่กว่าร้านอื่น เยอะด้วยอิ่มแน่นอน ป้ากินมาหลายปีแล้ว",
     rating: 5,
     date: "กุมภาพันธ์ 2569",
     avatarInitials: "อ",
@@ -169,7 +178,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-16",
     name: "คุณเอก",
     location: "ข้าราชการ",
-    comment: "เมนูโปรดคือเกี๊ยวปูหมูแดงแห้งครับ สั่งเบิ้ลตลอด อร่อยจนต้องบอกต่อ เพื่อนร่วมงานชอบทุกคน",
+    comment:
+      "เมนูโปรดคือเกี๊ยวปูหมูแดงแห้งครับ สั่งเบิ้ลตลอด อร่อยจนต้องบอกต่อ เพื่อนร่วมงานชอบทุกคน",
     rating: 5,
     date: "มกราคม 2568",
     avatarInitials: "เ",
@@ -179,7 +189,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-17",
     name: "Mali S.",
     location: "ไทยในต่างแดน",
-    comment: "กลับมาตากทีไรต้องมาทานร้านนี้ค่ะ รสชาติที่คิดถึง บะหมี่ทำมือของจริง หาที่ไหนไม่ได้อีกแล้ว",
+    comment:
+      "กลับมาตากทีไรต้องมาทานร้านนี้ค่ะ รสชาติที่คิดถึง บะหมี่ทำมือของจริง หาที่ไหนไม่ได้อีกแล้ว",
     rating: 5,
     date: "เมษายน 2568",
     avatarInitials: "M",
@@ -189,7 +200,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-18",
     name: "เชฟโต้ง",
     location: "นครสวรรค์",
-    comment: "เทคนิคการลวกเส้นทำได้ดีมากครับ ไม่เละ มีความสู้ฟัน หมูแดงหมักเข้าเนื้อ อร่อยระดับเชฟชม",
+    comment:
+      "เทคนิคการลวกเส้นทำได้ดีมากครับ ไม่เละ มีความสู้ฟัน หมูแดงหมักเข้าเนื้อ อร่อยระดับเชฟชม",
     rating: 5,
     date: "มิถุนายน 2568",
     avatarInitials: "ต",
@@ -209,7 +221,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-20",
     name: "Golf Z.",
     location: "Biker",
-    comment: "จุดพักรถที่ยอดเยี่ยมสำหรับชาวสองล้อ บะหมี่อิ่มจุใจ พลังงานเต็มเปี่ยม เจ้าของร้านเป็นกันเองมาก",
+    comment:
+      "จุดพักรถที่ยอดเยี่ยมสำหรับชาวสองล้อ บะหมี่อิ่มจุใจ พลังงานเต็มเปี่ยม เจ้าของร้านเป็นกันเองมาก",
     rating: 5,
     date: "กันยายน 2568",
     avatarInitials: "G",
@@ -219,7 +232,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-21",
     name: "พี่นก",
     location: "พนักงานธนาคาร",
-    comment: "ชอบซุปกระดูกมากค่ะ หวานน้ำต้มกระดูกจริงๆ ไม่ต้องปรุงเพิ่มเลย แย่งกันสั่งกับเพื่อนร่วมงานตลอด",
+    comment:
+      "ชอบซุปกระดูกมากค่ะ หวานน้ำต้มกระดูกจริงๆ ไม่ต้องปรุงเพิ่มเลย แย่งกันสั่งกับเพื่อนร่วมงานตลอด",
     rating: 5,
     date: "ตุลาคม 2568",
     avatarInitials: "น",
@@ -239,7 +253,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-23",
     name: "คุณอ้อม",
     location: "พยาบาล",
-    comment: "หลังออกเวรต้องแวะมาเติมพลังที่นี่ตลอดค่ะ อิ่ม สบายท้อง นอนหลับฝันดี ขอบคุณที่ทำของอร่อยๆ นะคะ",
+    comment:
+      "หลังออกเวรต้องแวะมาเติมพลังที่นี่ตลอดค่ะ อิ่ม สบายท้อง นอนหลับฝันดี ขอบคุณที่ทำของอร่อยๆ นะคะ",
     rating: 5,
     date: "ธันวาคม 2568",
     avatarInitials: "อ",
@@ -249,7 +264,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-24",
     name: "Boy Pakorn",
     location: "นักท่องเที่ยว",
-    comment: "เกี๊ยวปูแน่นมากครับ กัดไปเจอเนื้อปูเต็มๆ คำ แนะนำให้สั่งพิเศษเลย คุ้มค่าเงินที่จ่ายไปแน่นอน",
+    comment:
+      "เกี๊ยวปูแน่นมากครับ กัดไปเจอเนื้อปูเต็มๆ คำ แนะนำให้สั่งพิเศษเลย คุ้มค่าเงินที่จ่ายไปแน่นอน",
     rating: 5,
     date: "มกราคม 2569",
     avatarInitials: "B",
@@ -279,7 +295,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-27",
     name: "คุณวิชัย",
     location: "คนขับรถบรรทุก",
-    comment: "ที่จอดรถสะดวกแถวริมน้ำ แวะกินง่าย อิ่มท้องก่อนลุยงานต่อ ให้เครื่องเยอะถูกใจสายใช้แรงงาน",
+    comment:
+      "ที่จอดรถสะดวกแถวริมน้ำ แวะกินง่าย อิ่มท้องก่อนลุยงานต่อ ให้เครื่องเยอะถูกใจสายใช้แรงงาน",
     rating: 5,
     date: "เมษายน 2568",
     avatarInitials: "ว",
@@ -289,7 +306,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-28",
     name: "Pairwa",
     location: "Vlogger",
-    comment: "ทำคลิปรีวิวไปคนดูเยอะมาก ทุกคนถามพิกัดกันเพียบ ร้านเขาดีจริงค่ะ ถ่ายรูปก็สวยอาหารน่ากิน",
+    comment:
+      "ทำคลิปรีวิวไปคนดูเยอะมาก ทุกคนถามพิกัดกันเพียบ ร้านเขาดีจริงค่ะ ถ่ายรูปก็สวยอาหารน่ากิน",
     rating: 5,
     date: "พฤษภาคม 2568",
     avatarInitials: "พ",
@@ -309,7 +327,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-30",
     name: "น้องฟ้า",
     location: "นักเรียน",
-    comment: "มาทานกับเพื่อนหลังเลิกเรียนตลอดค่ะ พี่ๆ เจ้าของร้านเป็นกันเองมาก ราคาไม่แพงหนูจ่ายไหว",
+    comment:
+      "มาทานกับเพื่อนหลังเลิกเรียนตลอดค่ะ พี่ๆ เจ้าของร้านเป็นกันเองมาก ราคาไม่แพงหนูจ่ายไหว",
     rating: 5,
     date: "กรกฎาคม 2568",
     avatarInitials: "ฟ",
@@ -319,7 +338,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-31",
     name: "Artit K.",
     location: "ระยอง",
-    comment: "ขับรถเลาะริมน้ำมาเจอร้านนี้ บะหมี่เกี๊ยวปูเด็ดขาดมากครับ ปูเป็นก้อนๆ เลย หมูกรอบก็ดีงาม",
+    comment:
+      "ขับรถเลาะริมน้ำมาเจอร้านนี้ บะหมี่เกี๊ยวปูเด็ดขาดมากครับ ปูเป็นก้อนๆ เลย หมูกรอบก็ดีงาม",
     rating: 5,
     date: "สิงหาคม 2568",
     avatarInitials: "อ",
@@ -329,7 +349,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-32",
     name: "คุณจ๋า",
     location: "ร้านกาแฟใกล้ๆ",
-    comment: "แนะนำลูกค้าที่ร้านกาแฟให้มาทานที่นี่ตลอดค่ะ ไม่เคยโดนบ่นเลย มีแต่คนชมว่าอร่อยและสะอาด",
+    comment:
+      "แนะนำลูกค้าที่ร้านกาแฟให้มาทานที่นี่ตลอดค่ะ ไม่เคยโดนบ่นเลย มีแต่คนชมว่าอร่อยและสะอาด",
     rating: 5,
     date: "กันยายน 2568",
     avatarInitials: "จ",
@@ -339,7 +360,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-33",
     name: "Pee Mak",
     location: "คนเมืองตาก",
-    comment: "หมูกรอบร้านนี้กรอบนานมาก ขนาดซื้อกลับบ้านไปกินยังยังกรอบอยู่เลยครับ น้ำราดเข้มข้นสะใจ",
+    comment:
+      "หมูกรอบร้านนี้กรอบนานมาก ขนาดซื้อกลับบ้านไปกินยังยังกรอบอยู่เลยครับ น้ำราดเข้มข้นสะใจ",
     rating: 5,
     date: "ตุลาคม 2568",
     avatarInitials: "พ",
@@ -359,7 +381,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-35",
     name: "K. Somchai",
     location: "ลำปาง",
-    comment: "รสชาติบะหมี่กวางตุ้งแท้ๆ เลยครับ เหมือนไปกินที่ร้านดังๆ ในกรุงเทพเลย สะอาดและบริการดี",
+    comment:
+      "รสชาติบะหมี่กวางตุ้งแท้ๆ เลยครับ เหมือนไปกินที่ร้านดังๆ ในกรุงเทพเลย สะอาดและบริการดี",
     rating: 5,
     date: "ธันวาคม 2568",
     avatarInitials: "ส",
@@ -379,7 +402,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-37",
     name: "Winny",
     location: "Foreigner",
-    comment: "Best noodles in Tak! Very friendly owners and huge portions. Clean and tasty. Highly recommended!",
+    comment:
+      "Best noodles in Tak! Very friendly owners and huge portions. Clean and tasty. Highly recommended!",
     rating: 5,
     date: "กุมภาพันธ์ 2569",
     avatarInitials: "W",
@@ -419,7 +443,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-41",
     name: "K. James",
     location: "Digital Nomad",
-    comment: "Great place to grab a quick and delicious lunch. The crab is fresh and the service is super fast.",
+    comment:
+      "Great place to grab a quick and delicious lunch. The crab is fresh and the service is super fast.",
     rating: 5,
     date: "สิงหาคม 2568",
     avatarInitials: "J",
@@ -449,7 +474,8 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-44",
     name: "Natcha",
     location: "Foodie",
-    comment: "บะหมี่เส้นสดของจริง มันจะมีความเด้งๆ ที่หาซื้อตามห้างไม่ได้ ต้องร้านนี้เท่านั้นที่ทำให้",
+    comment:
+      "บะหมี่เส้นสดของจริง มันจะมีความเด้งๆ ที่หาซื้อตามห้างไม่ได้ ต้องร้านนี้เท่านั้นที่ทำให้",
     rating: 5,
     date: "มกราคม 2569",
     avatarInitials: "น",
@@ -509,10 +535,11 @@ export const customerReviews: CustomerReview[] = [
     id: "rev-50",
     name: "คุณป้าใจดี",
     location: "คนเมืองตาก",
-    comment: "เฮียเนกกับเจ๊ตั๊กเขาน่ารักนะลูก ดูแลคนแก่ดีมาก บะหมี่เขาก็อร่อยและให้เยอะที่สุดในตากแล้ว",
+    comment:
+      "เฮียเนกกับเจ๊ตั๊กเขาน่ารักนะลูก ดูแลคนแก่ดีมาก บะหมี่เขาก็อร่อยและให้เยอะที่สุดในตากแล้ว",
     rating: 5,
     date: "พฤศจิกายน 2568",
     avatarInitials: "ป",
     isVerified: true,
-  }
+  },
 ];

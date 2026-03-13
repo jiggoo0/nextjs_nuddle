@@ -9,11 +9,7 @@ interface AnimatedSectionProps {
   delay?: number;
 }
 
-export function AnimatedSection({
-  children,
-  className,
-  delay = 0,
-}: AnimatedSectionProps) {
+export function AnimatedSection({ children, className, delay = 0 }: AnimatedSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -30,11 +26,7 @@ export function AnimatedSection({
   );
 }
 
-export function AnimatedCard({
-  children,
-  className,
-  delay = 0,
-}: AnimatedSectionProps) {
+export function AnimatedCard({ children, className, delay = 0 }: AnimatedSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -42,11 +34,7 @@ export function AnimatedCard({
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 30, scale: 0.97 }}
-      animate={
-        isInView
-          ? { opacity: 1, y: 0, scale: 1 }
-          : { opacity: 0, y: 30, scale: 0.97 }
-      }
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.97 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
       className={className}
     >

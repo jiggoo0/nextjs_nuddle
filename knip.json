@@ -15,13 +15,7 @@
     ]
   },
   "project": ["**/*.{ts,tsx,js,mjs,mdx}"],
-  "ignore": [
-    "next-env.d.ts",
-    ".next/**",
-    "node_modules/**",
-    ".vercel/**",
-    "public/**"
-  ],
+  "ignore": ["next-env.d.ts", ".next/**", "node_modules/**", ".vercel/**", "public/**"],
   "ignoreDependencies": [
     "sharp",
     "postcss",

@@ -37,11 +37,11 @@ export const metadata: Metadata = {
   other: {
     "developer-contact": "https://www.aemdevweb.com",
     "developed-by": "AEMDEVWEB",
-  }
+  },
 };
 
 export const viewport: Viewport = {
-  viewportFit: 'cover',
+  viewportFit: "cover",
   themeColor: siteConfig.identity.themeColor,
 };
 

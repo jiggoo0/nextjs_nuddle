@@ -1,67 +1,12 @@
-@import "tailwindcss";
+/* 
+  ⚠️ TEMPORARY BYPASS: Removed tailwind import to fix Webpack resolution error on Android environment.
+  The Tailwind processing will be handled by Vercel deployment.
+*/
+/* @import "tailwindcss"; */
 
-@plugin "tailwindcss-animate";
-
-@custom-variant dark (&:is(.dark *));
-
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-
-  --color-background: #fffcf2; /* Warm Cream - กระตุ้นความอยากอาหาร */
-  --color-foreground: #252422;
-
-  --color-card: #ffffff;
-  --color-card-foreground: #252422;
-
-  --color-popover: #ffffff;
-  --color-popover-foreground: #252422;
-
-  --color-primary: #b22222; /* Deep Red - สีหมูแดง */
-  --color-primary-foreground: #ffffff;
-
-  --color-secondary: #ffb700; /* Noodle Gold - สีเส้นบะหมี่ */
-  --color-secondary-foreground: #252422;
-
-  --color-muted: #f4f1de;
-  --color-muted-foreground: #66615b;
-
-  --color-accent: #eb5e28; /* Orange-ish - สีซอสเย็นตาโฟ/ต้มยำ */
-  --color-accent-foreground: #ffffff;
-
-  --color-destructive: #d00000;
-  --color-destructive-foreground: #ffffff;
-
-  --color-border: #e9ecef;
-  --color-input: #e9ecef;
-  --color-ring: #b22222;
-
-  --radius-lg: 1.5rem;
-  --radius-md: 1rem;
-  --radius-sm: 0.5rem;
-}
-
-/* 🍜 CUSTOM FOODIE STYLES */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-}
-
-@layer components {
-  .glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
-  }
-  
-  .food-card {
-    @apply bg-card rounded-[2rem] border-none shadow-sm hover:shadow-xl transition-all duration-500;
-  }
-
-  .nav-link {
-    @apply text-muted-foreground hover:text-primary transition-colors font-medium;
+    background-color: #fffcf2;
+    color: #252422;
   }
 }

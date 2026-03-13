@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
-import { Client, WebhookEvent } from '@line/bot-sdk';
+import { NextResponse } from "next/server";
+import { Client, WebhookEvent } from "@line/bot-sdk";
 
-import { siteConfig } from '@/constants/site-config';
+import { siteConfig } from "@/constants/site-config";
 
 const config = {
-  channelAccessToken: process.env.LINE_ACCESS_TOKEN || '',
-  channelSecret: process.env.LINE_CHANNEL_SECRET || '',
+  channelAccessToken: process.env.LINE_ACCESS_TOKEN || "",
+  channelSecret: process.env.LINE_CHANNEL_SECRET || "",
 };
 
 const client = new Client(config);
@@ -18,10 +18,10 @@ export async function POST(req: Request) {
 
     const results = await Promise.all(
       events.map(async (event) => {
-        if (event.type === 'message' && event.message.type === 'text') {
+        if (event.type === "message" && event.message.type === "text") {
           const userMessage = event.message.text.trim().toLowerCase();
           const userId = event.source.userId;
-          
+
           // --- SPECIAL LOGIC: ADMIN RECOGNITION ---
           if (userId === ADMIN_USER_ID && userMessage === "status") {
             const replyText = `[AEMDEVWEB SYSTEM STATUS]
@@ -32,14 +32,14 @@ export async function POST(req: Request) {
 - Developer: นายอลงกรณ์ ยมเกิด
 
 ระบบทำงานปกติ 100% ครับนายท่าน`;
-            return client.replyMessage(event.replyToken, { type: 'text', text: replyText });
+            return client.replyMessage(event.replyToken, { type: "text", text: replyText });
           }
 
           let replyText: string;
 
           // --- LOGIC: NAVIGATION MENU (Keywords & Numbers) ---
           if (userMessage.includes("เมนู") || userMessage === "1") {
-            replyText = `[🍜 เมนูแนะนำ - ${siteConfig.identity.name}]
+            replyText = `[เมนูแนะนำ - ${siteConfig.identity.name}]
 1. ${siteConfig.pricing.tiers[1].name} (${siteConfig.pricing.tiers[1].price}) *ยอดนิยม*
 2. ${siteConfig.pricing.tiers[0].name} (${siteConfig.pricing.tiers[0].price})
 3. ${siteConfig.pricing.tiers[2].name} (${siteConfig.pricing.tiers[2].price})
@@ -48,8 +48,12 @@ export async function POST(req: Request) {
 ${siteConfig.identity.url}/#menu
 
 (ราคาอาจมีการเปลี่ยนแปลงตามขนาดพิเศษ/ธรรมดาครับ)`;
-          } else if (userMessage.includes("พิกัด") || userMessage.includes("ที่ตั้ง") || userMessage === "2") {
-            replyText = `[📍 พิกัดและเวลาเปิดให้บริการ]
+          } else if (
+            userMessage.includes("พิกัด") ||
+            userMessage.includes("ที่ตั้ง") ||
+            userMessage === "2"
+          ) {
+            replyText = `[พิกัดและเวลาเปิดให้บริการ]
 🏠 ที่ตั้ง: ${siteConfig.contact.address}
 ⏰ เวลาเปิด: ${siteConfig.contact.businessHours}
 
@@ -58,7 +62,7 @@ ${siteConfig.contact.googleMaps}
 
 ยินดีต้อนรับทุกท่านสู่ร้านลับเมืองตากครับ`;
           } else if (userMessage.includes("สั่ง") || userMessage === "3") {
-            replyText = `[☎️ ช่องทางการสั่งอาหารล่วงหน้า]
+            replyText = `[ช่องทางการสั่งอาหารล่วงหน้า]
 📞 โทร: ${siteConfig.contact.phone}
 (เฮียเนก หรือ เจ๊ตั๊ก ยินดีรับสายด้วยตัวเองครับ)
 
@@ -66,7 +70,7 @@ ${siteConfig.contact.googleMaps}
 
 (เราใส่ใจทุกชามเพื่อคุณภาพที่ดีที่สุด)`;
           } else if (userMessage.includes("จัดเลี้ยง") || userMessage === "4") {
-            replyText = `[🤝 บริการจัดเลี้ยงนอกสถานที่ (Catering)]
+            replyText = `[บริการจัดเลี้ยงนอกสถานที่ (Catering)]
 ${siteConfig.catering.title}
 
 ✨ ${siteConfig.catering.description}
@@ -77,7 +81,10 @@ ${siteConfig.catering.title}
 
 (สร้างความประทับใจให้แขกของคุณด้วยบะหมี่ระดับตำนาน)`;
           } else if (userMessage === "0") {
-            const greeting = userId === ADMIN_USER_ID ? "สวัสดีครับ นายท่านอลงกรณ์ (AEMDEVWEB)" : `ยินดีต้อนรับสู่ ${siteConfig.identity.name}`;
+            const greeting =
+              userId === ADMIN_USER_ID
+                ? "สวัสดีครับ นายท่านอลงกรณ์ (AEMDEVWEB)"
+                : `ยินดีต้อนรับสู่ ${siteConfig.identity.name}`;
             replyText = `${greeting}
 ตำนานบะหมี่ไข่ 98% ของอร่อยเมืองตาก 9 ปี
 
@@ -90,7 +97,10 @@ ${siteConfig.catering.title}
 
 แอดมินยินดีให้บริการครับ 🙏`;
           } else {
-            const greeting = userId === ADMIN_USER_ID ? "สวัสดีครับ นายท่านอลงกรณ์ (AEMDEVWEB)" : `สวัสดีครับ ${siteConfig.identity.name} ยินดีให้บริการครับ`;
+            const greeting =
+              userId === ADMIN_USER_ID
+                ? "สวัสดีครับ นายท่านอลงกรณ์ (AEMDEVWEB)"
+                : `สวัสดีครับ ${siteConfig.identity.name} ยินดีให้บริการครับ`;
             replyText = `${greeting}
 ขออภัยครับ ระบบไม่เข้าใจข้อความนี้
 
@@ -103,7 +113,7 @@ ${siteConfig.catering.title}
           }
 
           return client.replyMessage(event.replyToken, {
-            type: 'text',
+            type: "text",
             text: replyText,
           });
         }
@@ -112,7 +122,7 @@ ${siteConfig.catering.title}
 
     return NextResponse.json(results);
   } catch (err) {
-    console.error('LINE Webhook Error:', err);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.error("LINE Webhook Error:", err);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

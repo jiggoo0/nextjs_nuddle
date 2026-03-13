@@ -10,7 +10,7 @@ export function MenuHighlights() {
   const { pricing } = siteConfig;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
       {pricing.tiers.map((tier, index) => (
         <motion.div
           key={tier.name}
@@ -18,33 +18,37 @@ export function MenuHighlights() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: index * 0.1 }}
-          className={`relative flex flex-col p-8 rounded-[32px] border bg-card hover:shadow-2xl transition-all duration-500 ${
-            tier.highlighted ? "border-primary shadow-xl ring-1 ring-primary/20 scale-105 z-10" : "border-border"
+          className={`bg-card relative flex flex-col rounded-[32px] border p-8 transition-all duration-500 hover:shadow-2xl ${
+            tier.highlighted
+              ? "border-primary ring-primary/20 z-10 scale-105 shadow-xl ring-1"
+              : "border-border"
           }`}
         >
           {tier.highlighted && (
             <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-              <Badge className="bg-primary text-primary-foreground font-bold shadow-md uppercase tracking-wider text-[10px] px-3">
+              <Badge className="bg-primary text-primary-foreground px-3 text-[10px] font-bold tracking-wider uppercase shadow-md">
                 เมนูยอดนิยม
               </Badge>
             </div>
           )}
 
           <div className="mb-8">
-            <h3 className="text-xl font-bold mb-2">{tier.name}</h3>
+            <h3 className="mb-2 text-xl font-bold">{tier.name}</h3>
             <div className="flex items-baseline gap-1">
-              <span className="text-4xl font-bold tracking-tight text-foreground">{tier.price}</span>
+              <span className="text-foreground text-4xl font-bold tracking-tight">
+                {tier.price}
+              </span>
             </div>
-            <p className="text-muted-foreground text-sm mt-4 leading-relaxed italic">
+            <p className="text-muted-foreground mt-4 text-sm leading-relaxed italic">
               "{tier.description}"
             </p>
           </div>
 
-          <ul className="space-y-4 mb-10 flex-grow">
+          <ul className="mb-10 flex-grow space-y-4">
             {tier.features.map((feature) => (
               <li key={feature} className="flex items-start gap-3 text-sm">
-                <div className="mt-1 w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <Check className="w-2.5 h-2.5" />
+                <div className="bg-primary/10 text-primary mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full">
+                  <Check className="h-2.5 w-2.5" />
                 </div>
                 <span className="text-muted-foreground">{feature}</span>
               </li>
@@ -53,7 +57,7 @@ export function MenuHighlights() {
 
           <Button
             variant={tier.highlighted ? "default" : "outline"}
-            className="w-full h-12 rounded-xl font-bold text-sm tracking-wide"
+            className="h-12 w-full rounded-xl text-sm font-bold tracking-wide"
             asChild
           >
             <a href="#contact">{tier.cta}</a>

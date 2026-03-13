@@ -6,6 +6,7 @@
 ---
 
 ## 🛠️ TECH STACK
+
 - **Framework:** Next.js 16.1.6 (Latest Webpack Engine)
 - **UI:** React 19, Tailwind CSS 4.1.9, Framer Motion
 - **Components:** Shadcn UI (Radix UI)
@@ -15,6 +16,7 @@
 ---
 
 ## 📋 CURRENT STATUS
+
 1.  ✅ **Build Status:** 100% Healthy (Production build generated 19/19 pages).
 2.  ✅ **Critical Fixes:** Resolved Metadata ReferenceErrors and LINE Webhook Linting issues.
 3.  ✅ **Structure:** App Router structure is solid with SSOT in `constants/site-config.ts`.
@@ -23,10 +25,12 @@
 ---
 
 ## 🚀 NEXT STEPS
+
 - [ ] **SEO Optimization:** Finalize metadata for all blog posts and dynamic pages.
 - [ ] **Kapoamom Launch:** Implement the ordering system/landing page enhancements for the sauce brand.
 - [ ] **Performance:** Optimize image loading and layout shifts (CLS) on mobile.
 - [ ] **LINE Bot:** Extend webhook capabilities for automated order inquiries.
 
 ---
-*Updated: Friday, March 13, 2026 (AI Setup Complete)*
+
+_Updated: Friday, March 13, 2026 (AI Setup Complete)_
