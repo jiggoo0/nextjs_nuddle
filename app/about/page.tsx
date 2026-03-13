@@ -111,8 +111,8 @@ export default function AboutPage() {
               <AnimatedSection delay={0.2} className="relative">
                 <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white aspect-square -rotate-2 hover:rotate-0 transition-transform duration-700">
                   <Image 
-                    src="/images/signature-98-noodle.webp" 
-                    alt="การทำบะหมี่ไข่ 98%" 
+                    src="/images/success-story.webp" 
+                    alt="ความภูมิใจและรางวัลจากความขยัน" 
                     fill 
                     className="object-cover"
                   />
