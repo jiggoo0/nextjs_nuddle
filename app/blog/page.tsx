@@ -1,4 +1,5 @@
 import { siteConfig } from "@/constants/site-config";
+import { blogRegistry } from "@/constants/blog-registry";
 import { Metadata } from "next";
 import { Navigation } from "@/components/layout/Header";
 import { FooterSection } from "@/components/layout/Footer";
@@ -9,44 +10,14 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, ChevronRight, BookOpen } from "lucide-react";
-import fs from "fs";
-import path from "path";
 
 export const metadata: Metadata = {
   title: `ข่าวสารและคู่มือของอร่อยเมืองตาก | ${siteConfig.identity.name}`,
   description: "รวบรวมบทความที่มีประโยชน์ ข่าวสารจังหวัดตาก และเคล็ดลับความอร่อยจากร้าน ช.สหชัย เกี๊ยวปูหมูแดง",
 };
 
-function getAllBlogs() {
-  const contentDir = path.join(process.cwd(), "content/blog");
-  const files = fs.readdirSync(contentDir);
-  
-  return files
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => {
-      const slug = file.replace(".mdx", "");
-      const content = fs.readFileSync(path.join(contentDir, file), "utf8");
-      
-      const titleMatch = content.match(/title:\s*"(.*)"/);
-      const dateMatch = content.match(/date:\s*"(.*)"/);
-      const excerptMatch = content.match(/excerpt:\s*"(.*)"/);
-      const categoryMatch = content.match(/category:\s*"(.*)"/);
-      const imageMatch = content.match(/image:\s*"(.*)"/);
-      
-      return {
-        slug,
-        title: titleMatch ? titleMatch[1] : slug,
-        date: dateMatch ? dateMatch[1] : "ไม่ระบุวันที่",
-        excerpt: excerptMatch ? excerptMatch[1] : "",
-        category: categoryMatch ? categoryMatch[1] : "ทั่วไป",
-        image: imageMatch ? imageMatch[1] : "blog-noodle-1.webp",
-      };
-    })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-}
-
 export default function BlogListingPage() {
-  const blogs = getAllBlogs();
+  const blogs = [...blogRegistry].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -71,8 +42,7 @@ export default function BlogListingPage() {
               <AnimatedSection key={blog.slug} delay={idx * 0.1}>
                 <Link href={`/blog/${blog.slug}`} className="group">
                   <Card className="rounded-[3rem] overflow-hidden border border-border bg-card hover:shadow-2xl transition-all duration-500 h-full flex flex-col group-hover:-translate-y-2">
-                    {/* BLOG IMAGE ADDED HERE */}
-                    <div className="relative h-64 w-full overflow-hidden">
+                    <div className="relative h-64 w-full overflow-hidden bg-muted">
                       <Image 
                         src={`/images/${blog.image}`} 
                         alt={blog.title} 
@@ -110,7 +80,7 @@ export default function BlogListingPage() {
             ))}
           </div>
 
-          <div className="mt-24 p-12 bg-primary text-white rounded-[4rem] text-center shadow-2xl shadow-primary/30 relative overflow-hidden">
+          <div className="mt-24 p-12 bg-primary text-white rounded-[4rem] text-center shadow-2xl shadow-primary/20 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32" />
             <BookOpen className="w-12 h-12 mx-auto mb-6 opacity-50" />
             <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight text-white">ต้องการรับเหมาจัดเลี้ยง?</h2>
