@@ -15,6 +15,27 @@ interface BlogPageProps {
   params: Promise<{ slug: string }>;
 }
 
+// ฟังก์ชันช่วยดึง Metadata จากไฟล์ MDX แบบง่าย
+function getMdxData(slug: string) {
+  try {
+    const filePath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
+    if (!fs.existsSync(filePath)) return null;
+    
+    const content = fs.readFileSync(filePath, "utf8");
+    const titleMatch = content.match(/title:\s*"(.*)"/);
+    const dateMatch = content.match(/date:\s*"(.*)"/);
+    const categoryMatch = content.match(/category:\s*"(.*)"/);
+    
+    return {
+      title: titleMatch ? titleMatch[1] : slug,
+      date: dateMatch ? dateMatch[1] : "ไม่ระบุวันที่",
+      category: categoryMatch ? categoryMatch[1] : "ทั่วไป",
+    };
+  } catch (e) {
+    return null;
+  }
+}
+
 export async function generateStaticParams() {
   const contentDir = path.join(process.cwd(), "content/blog");
   const files = fs.readdirSync(contentDir);
@@ -28,30 +49,30 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const title = slug.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+  const data = getMdxData(slug);
   
+  if (!data) return { title: "บทความไม่พบ" };
+
   return {
-    title: `${title} | คู่มือของอร่อยและข่าวสารเมืองตาก | ${siteConfig.identity.name}`,
-    description: `อ่านข่าวสารจังหวัดตากและเรื่องราวความอร่อยของร้าน ช.สหชัย ${title} - รวบรวมข้อมูลที่เป็นประโยชน์สำหรับชาวเมืองตากและนักท่องเที่ยว`,
+    title: `${data.title} | ${siteConfig.identity.name}`,
+    description: `อ่านบทความเรื่อง ${data.title} รวบรวมข้อมูลที่เป็นประโยชน์จากร้าน ช.สหชัย และข่าวสารเมืองตาก`,
     openGraph: {
-      images: [`/images/blog-${slug}.webp`, "/og-main.png"],
+      images: ["/og-main.png"],
     }
   };
 }
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
   const { slug } = await params;
+  const data = getMdxData(slug);
   
-  const filePath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) {
+  if (!data) {
     notFound();
   }
 
   const Content = dynamic(() => import(`@/content/blog/${slug}.mdx`), {
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-[3rem]" />,
   });
-
-  const formattedTitle = slug.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -68,24 +89,24 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
             {/* Post Header */}
             <div className="mb-12">
               <Badge className="bg-primary/10 text-primary border-none px-4 py-1 rounded-full mb-6 font-bold uppercase tracking-widest">
-                Tak Local News & Food
+                {data.category}
               </Badge>
               <h1 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight mb-8">
-                {formattedTitle}
+                {data.title}
               </h1>
               
               <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground font-medium border-y border-border py-6">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-primary" />
-                  <span>13 มีนาคม 2026</span>
+                  <span>{data.date}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <User className="w-4 h-4 text-primary" />
-                  <span>โดย เฮียเนก-เจ๊ตั๊ก (ช.สหชัย)</span>
+                  <span>โดย ช.สหชัย (ตาก)</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Tag className="w-4 h-4 text-primary" />
-                  <span>ของดีเมืองตาก, ข่าวสารจังหวัด</span>
+                  <span>ข่าวสารจังหวัดตาก, ของอร่อยเมืองตาก</span>
                 </div>
               </div>
             </div>
@@ -103,8 +124,8 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
             <div className="mt-20 p-10 bg-primary/5 rounded-[3rem] border border-primary/10 text-center">
               <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-2">Developed & Optimized by</p>
               <h3 className="text-2xl font-black text-primary">AEMDEVWEB</h3>
-              <p className="text-muted-foreground mt-2 max-w-md mx-auto">
-                เราให้บริการด้าน SEO และระบบเว็บไซต์ประสิทธิภาพสูง เพื่อให้ธุรกิจในท้องถิ่นเติบโตอย่างมั่นคงในยุคดิจิทัล
+              <p className="text-muted-foreground mt-2 max-w-md mx-auto text-sm">
+                เราให้บริการด้าน SEO และระบบเว็บไซต์ประสิทธิภาพสูง เพื่อให้ธุรกิจท้องถิ่นเติบโตอย่างมั่นคง
               </p>
             </div>
           </AnimatedSection>

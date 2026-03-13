@@ -1,6 +1,6 @@
 "use client";
 
-import { siteConfig, cateringService } from "@/constants/site-config";
+import { cateringService } from "@/constants/site-config";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,12 +8,25 @@ import { motion } from "framer-motion";
 import { Utensils, ArrowRight, BookOpen, Calendar, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import blogData from "@/data/blog.json";
+
+// สร้าง Mock Data สำหรับ Blog ชั่วคราว (หรือจะดึงจาก API/FileSystem ใน Server Component ก็ได้)
+// ในที่นี้เป็น Client Component เราจะใช้ข้อมูลคงที่ที่สอดคล้องกับไฟล์ MDX ครับ
+const latestBlogs = [
+  {
+    slug: "legend-of-sahachai-noodle",
+    title: "5 เหตุผลที่ทำไมบะหมี่เกี๊ยวปู ช.สหชัย ถึงเป็นตำนานเมืองตากกว่า 9 ปี",
+    date: "2026-03-10",
+    image: "blog-noodle-1.webp"
+  },
+  {
+    slug: "secret-red-pork-recipe",
+    title: "สูตรลับหมูแดงย่างเตาถ่าน เฮียเนก: มรดกความอร่อยที่หาทานยาก",
+    date: "2026-03-05",
+    image: "blog-noodle-2.webp"
+  }
+];
 
 export function KnowledgeCorner() {
-  // ดึงบทความล่าสุด 2 บทความ
-  const latestBlogs = blogData.slice(0, 2);
-
   return (
     <section className="py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-6">
@@ -83,7 +96,7 @@ export function KnowledgeCorner() {
             
             {latestBlogs.map((blog, idx) => (
               <motion.div
-                key={blog.id}
+                key={blog.slug}
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
