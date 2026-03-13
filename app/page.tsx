@@ -5,6 +5,7 @@ import { Navigation } from "@/components/layout/Header";
 import { FooterSection } from "@/components/layout/Footer";
 import { MenuHighlights } from "@/components/home/MenuHighlights";
 import { ReviewCarousel } from "@/components/home/Testimonials";
+import { KnowledgeCorner } from "@/components/home/KnowledgeCorner";
 import { AnimatedSection } from "@/components/animated-section";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Phone, Clock, Quote, ChevronDown } from "lucide-react";
@@ -102,7 +103,10 @@ export default function Home() {
         {/* 4. REAL CUSTOMER REVIEWS */}
         <ReviewCarousel />
 
-        {/* 5. MOMENTS OF JOY */}
+        {/* 5. SERVICES & KNOWLEDGE CORNER (NEW!) */}
+        <KnowledgeCorner />
+
+        {/* 6. MOMENTS OF JOY */}
         <section id="gallery" className="py-32 bg-background">
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
@@ -138,7 +142,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 6. VISIT US */}
+        {/* 7. VISIT US */}
         <section id="contact" className="py-32 bg-primary/5 border-t border-primary/10">
           <div className="container mx-auto px-6">
             <div className="bg-white rounded-[4rem] p-12 lg:p-20 shadow-2xl border border-primary/5 flex flex-col lg:flex-row gap-16 items-center">
