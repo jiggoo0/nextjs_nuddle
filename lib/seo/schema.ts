@@ -43,11 +43,18 @@ export function getRestaurantSchema() {
       }
     ],
     "hasMenu": `${siteConfig.identity.url}/menu`,
-    "founder": {
-      "@type": "Person",
-      "name": "เฮียเนก",
-      "jobTitle": "Head Chef & Founder"
-    },
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "นายอเนก ยมเกิด Anek Yomkerd (เฮียเนก)",
+        "jobTitle": "Head Chef & Founder"
+      },
+      {
+        "@type": "Person",
+        "name": "นางนัชรินทร์ ยมเกิด Nutcharin Yomkerd (เจ๊ตั๊ก)",
+        "jobTitle": "Co-Founder & Manager"
+      }
+    ],
     "knowsAbout": ["Traditional Thai Noodle", "Egg Noodle 98%", "Charcoal Grilled Red Pork"],
     "maintainer": {
       "@type": "Organization",
