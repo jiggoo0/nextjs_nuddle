@@ -36,85 +36,67 @@ export async function POST(req: Request) {
           }
 
           let replyText: string;
+          const quickReplyItems = {
+            items: [
+              { type: "action", action: { type: "message", label: "🍜 เมนูแนะนำ", text: "1" } },
+              { type: "action", action: { type: "message", label: "📍 พิกัดร้าน", text: "2" } },
+              { type: "action", action: { type: "message", label: "☎️ สั่งอาหาร", text: "3" } },
+              { type: "action", action: { type: "message", label: "🤝 จัดเลี้ยง", text: "4" } },
+              { type: "action", action: { type: "message", label: "🏠 เมนูหลัก", text: "0" } },
+            ],
+          };
 
           // --- LOGIC: NAVIGATION MENU (Keywords & Numbers) ---
           if (userMessage.includes("เมนู") || userMessage === "1") {
-            replyText = `[เมนูแนะนำ - ${siteConfig.identity.name}]
+            replyText = `[🍜 เมนูแนะนำ - ${siteConfig.identity.name}]
 1. ${siteConfig.pricing.tiers[1].name} (${siteConfig.pricing.tiers[1].price}) *ยอดนิยม*
 2. ${siteConfig.pricing.tiers[0].name} (${siteConfig.pricing.tiers[0].price})
 3. ${siteConfig.pricing.tiers[2].name} (${siteConfig.pricing.tiers[2].price})
 
 🌐 ดูเมนูและรูปภาพทั้งหมด:
-${siteConfig.identity.url}/#menu
-
-(ราคาอาจมีการเปลี่ยนแปลงตามขนาดพิเศษ/ธรรมดาครับ)`;
+${siteConfig.identity.url}/#menu`;
           } else if (
             userMessage.includes("พิกัด") ||
             userMessage.includes("ที่ตั้ง") ||
             userMessage === "2"
           ) {
-            replyText = `[พิกัดและเวลาเปิดให้บริการ]
+            replyText = `[📍 พิกัดและเวลาเปิดให้บริการ]
 🏠 ที่ตั้ง: ${siteConfig.contact.address}
-⏰ เวลาเปิด: ${siteConfig.contact.businessHours}
+⏰ เปิด: ${siteConfig.contact.businessHours}
 
 🗺️ แผนที่ Google Maps:
-${siteConfig.contact.googleMaps}
-
-ยินดีต้อนรับทุกท่านสู่ร้านลับเมืองตากครับ`;
+${siteConfig.contact.googleMaps}`;
           } else if (userMessage.includes("สั่ง") || userMessage === "3") {
-            replyText = `[ช่องทางการสั่งอาหารล่วงหน้า]
+            replyText = `[☎️ สั่งอาหารล่วงหน้า]
 📞 โทร: ${siteConfig.contact.phone}
 (เฮียเนก หรือ เจ๊ตั๊ก ยินดีรับสายด้วยตัวเองครับ)
 
-⏱️ แนะนำ: สั่งล่วงหน้า 15-20 นาที เพื่อความรวดเร็วและไม่ต้องรอคิวครับ
-
-(เราใส่ใจทุกชามเพื่อคุณภาพที่ดีที่สุด)`;
+⏱️ แนะนำ: สั่งล่วงหน้า 15-20 นาที เพื่อความรวดเร็วครับ`;
           } else if (userMessage.includes("จัดเลี้ยง") || userMessage === "4") {
-            replyText = `[บริการจัดเลี้ยงนอกสถานที่ (Catering)]
+            replyText = `[🤝 บริการจัดเลี้ยงนอกสถานที่]
 ${siteConfig.catering.title}
 
-✨ ${siteConfig.catering.description}
 📌 จุดเด่น: ${siteConfig.catering.highlights.join(", ")}
-
-สอบถามรายละเอียดเพิ่มเติม:
-📞 โทร: ${siteConfig.contact.phone}
-
-(สร้างความประทับใจให้แขกของคุณด้วยบะหมี่ระดับตำนาน)`;
+📞 สอบถาม: ${siteConfig.contact.phone}`;
           } else if (userMessage === "0") {
             const greeting =
               userId === ADMIN_USER_ID
-                ? "สวัสดีครับ นายท่านอลงกรณ์ (AEMDEVWEB)"
-                : `ยินดีต้อนรับสู่ ${siteConfig.identity.name}`;
-            replyText = `${greeting}
-ตำนานบะหมี่ไข่ 98% ของอร่อยเมืองตาก 9 ปี
-
-กรุณาเลือกกดหมายเลขเพื่อดูข้อมูลครับ:
-1. ดูเมนูแนะนำและราคา
-2. พิกัดร้านและเวลาเปิด-ปิด
-3. สั่งอาหารล่วงหน้า/จองโต๊ะ
-4. บริการรับเหมาจัดเลี้ยง (Catering)
-0. แสดงเมนูนี้อีกครั้ง
-
-แอดมินยินดีให้บริการครับ 🙏`;
-          } else {
-            const greeting =
-              userId === ADMIN_USER_ID
-                ? "สวัสดีครับ นายท่านอลงกรณ์ (AEMDEVWEB)"
+                ? "สวัสดีครับ นายท่านอลงกรณ์"
                 : `สวัสดีครับ ${siteConfig.identity.name} ยินดีให้บริการครับ`;
             replyText = `${greeting}
-ขออภัยครับ ระบบไม่เข้าใจข้อความนี้
+ตำนานบะหมี่ไข่ 98% เมืองตาก 9 ปี
 
-กรุณาเลือกกดหมายเลขเพื่อรับข้อมูลที่ถูกต้องครับ:
-1. ดูเมนูแนะนำ
-2. พิกัดร้าน
-3. สั่งอาหาร
-4. บริการจัดเลี้ยง
-0. กลับสู่เมนูหลัก`;
+กรุณาเลือกกดปุ่มเมนูที่ต้องการด้านล่างได้เลยครับ 👇`;
+          } else {
+            replyText = `ขออภัยครับ ระบบไม่เข้าใจข้อความนี้ 🙏
+
+ท่านสามารถเลือกกดปุ่มด้านล่างเพื่อรับข้อมูลที่ต้องการได้ทันทีครับ 👇`;
           }
 
           return client.replyMessage(event.replyToken, {
             type: "text",
             text: replyText,
+            quickReply: quickReplyItems as any,
           });
         }
       })
