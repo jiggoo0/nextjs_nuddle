@@ -81,7 +81,7 @@ export default function ContactPage() {
             </AnimatedSection>
 
             <AnimatedSection className="lg:col-span-3">
-              <div className="bg-white rounded-3xl overflow-hidden shadow-md border-8 border-white h-[600px] w-full relative">
+              <div className="bg-white rounded-3xl overflow-hidden shadow-md border-8 border-white h-[400px] md:h-[450px] w-full relative">
                 <iframe 
                   src={siteData.google_maps_embed} 
                   width="100%" 
