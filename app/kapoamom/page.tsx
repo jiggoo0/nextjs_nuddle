@@ -18,6 +18,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/constants/site-config";
+import { getProductSchema, getBreadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "ซอสผัดกะเพรา kapoamom | สูตรแม่ทำให้ทาน อร่อยใน 2 นาที ไม่ต้องปรุงเพิ่ม",
@@ -59,8 +61,16 @@ export const metadata: Metadata = {
 };
 
 export default function KapoamomPage() {
+  const productSchema = getProductSchema();
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "หน้าแรก", item: "/" },
+    { name: "ซอสผัดกะเพรา kapoamom", item: "/kapoamom" },
+  ]);
+
   return (
     <div className="flex min-h-screen flex-col bg-[#FFFDF9] text-[#4A3728]">
+      <JsonLd data={productSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <Navigation />
 
       <main className="flex-grow pt-24">

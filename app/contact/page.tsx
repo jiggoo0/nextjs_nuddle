@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Clock, Facebook } from "lucide-react";
 import siteData from "@/data/site.json";
+import { getBreadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "ติดต่อเรา | ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก",
@@ -15,8 +17,14 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "หน้าแรก", item: "/" },
+    { name: "ติดต่อเรา", item: "/contact" },
+  ]);
+
   return (
     <div className="flex-min-h-screen bg-warm-cream flex flex-col">
+      <JsonLd data={breadcrumbSchema} />
       <Navigation />
 
       <main className="flex-grow pt-24 pb-20">

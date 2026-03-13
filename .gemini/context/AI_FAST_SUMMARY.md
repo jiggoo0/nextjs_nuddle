@@ -1,5 +1,5 @@
 # 🤖 AI FAST PROJECT CONTEXT
-> Generated at: Fri Mar 13 12:31:36 +07 2026
+> Generated at: Fri Mar 13 12:38:34 +07 2026
 > Purpose: สำหรับให้ AI อ่านภาพรวมโค้ดและโครงสร้างอย่างรวดเร็ว
 
 ## 📂 CORE STRUCTURE
@@ -303,6 +303,9 @@
 ./lib
 ./lib/api
 ./lib/api/data.ts
+./lib/seo
+./lib/seo/json-ld.tsx
+./lib/seo/schema.ts
 ./lib/utils.ts
 ./mdx-components.tsx
 ./next-env.d.ts
@@ -653,6 +656,8 @@ import { Badge } from "@/components/ui/badge";
 import { Quote, Star, ShieldCheck, GraduationCap, Coins } from "lucide-react";
 import Image from "next/image";
 import { siteConfig } from "@/constants/site-config";
+import { getBreadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
   title: `เรื่องราว 9 ปีของเฮียเนก | ${siteConfig.identity.name}`,
@@ -661,8 +666,14 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "หน้าแรก", item: "/" },
+    { name: "เรื่องราว 9 ปี", item: "/about" },
+  ]);
+
   return (
     <div className="bg-background text-foreground flex min-h-screen flex-col">
+      <JsonLd data={breadcrumbSchema} />
       <Navigation />
 
       <main className="flex-grow pt-24 pb-20">
@@ -737,14 +748,6 @@ export default function AboutPage() {
         {/* SECTION 2: THE FRUIT OF LABOR (WEALTH FROM NOODLES) */}
         <section className="bg-primary/5 border-primary/10 border-y py-24">
           <div className="container mx-auto px-6">
-            <div className="grid items-center gap-16 md:grid-cols-2">
-              <AnimatedSection className="space-y-8">
-                <div className="bg-primary shadow-primary/30 mb-2 inline-flex h-16 w-16 items-center justify-center rounded-2xl text-white shadow-lg">
-                  <Coins className="h-8 w-8" />
-                </div>
-                <h2 className="text-4xl font-black tracking-tighter md:text-5xl">
-                  มีวันนี้เพราะ <br />
-                  <span className="text-primary">"บะหมี่จริงๆ"</span>
 ```
 
 ### File: app/api/line/route.ts
@@ -864,6 +867,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronLeft, User, Clock, BarChart3, Zap, CheckCircle2, Cpu } from "lucide-react";
+import { getBlogPostingSchema, getBreadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/lib/seo/json-ld";
 
 interface BlogPageProps {
   params: Promise<{ slug: string }>;
@@ -917,8 +922,17 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
     loading: () => <div className="bg-muted h-96 animate-pulse rounded-[3rem]" />,
   });
 
+  const blogSchema = getBlogPostingSchema(blog);
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "หน้าแรก", item: "/" },
+    { name: "คลังความรู้", item: "/blog" },
+    { name: blog.title, item: `/blog/${slug}` },
+  ]);
+
   return (
     <div className="bg-background text-foreground flex min-h-screen flex-col">
+      <JsonLd data={blogSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <Navigation />
 
       <main className="flex-grow pt-32 pb-20">
@@ -942,17 +956,6 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
             </h1>
 
             {/* INSIGHT CARDS */}
-            <div className="bg-muted/30 border-border/50 mb-16 grid grid-cols-1 gap-4 rounded-[2.5rem] border p-2 md:grid-cols-4">
-              <div className="dark:bg-card border-primary/5 flex flex-col justify-between rounded-[2rem] border bg-white p-6 shadow-sm">
-                <div className="mb-4 flex items-center justify-between">
-                  <Clock className="text-primary h-5 w-5" />
-                  <span className="text-primary text-[10px] font-black uppercase">Read Time</span>
-                </div>
-                <div className="text-2xl font-black tracking-tighter">3-5 Min</div>
-                <p className="text-muted-foreground mt-1 text-[10px] font-bold">
-                  สรุปข้อมูลเพื่อคุณ
-                </p>
-              </div>
 ```
 
 ### File: app/blog/page.tsx
@@ -1069,6 +1072,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Clock, Facebook } from "lucide-react";
 import siteData from "@/data/site.json";
+import { getBreadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "ติดต่อเรา | ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก",
@@ -1078,8 +1083,14 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "หน้าแรก", item: "/" },
+    { name: "ติดต่อเรา", item: "/contact" },
+  ]);
+
   return (
     <div className="flex-min-h-screen bg-warm-cream flex flex-col">
+      <JsonLd data={breadcrumbSchema} />
       <Navigation />
 
       <main className="flex-grow pt-24 pb-20">
@@ -1153,14 +1164,6 @@ export default function ContactPage() {
               <div className="relative h-[400px] w-full overflow-hidden rounded-3xl border-8 border-white bg-white shadow-md md:h-[450px]">
                 <iframe
                   src={siteData.google_maps_embed}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute inset-0"
-                ></iframe>
 ```
 
 ### File: app/error.tsx
@@ -1310,6 +1313,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/constants/site-config";
+import { getProductSchema, getBreadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "ซอสผัดกะเพรา kapoamom | สูตรแม่ทำให้ทาน อร่อยใน 2 นาที ไม่ต้องปรุงเพิ่ม",
@@ -1351,8 +1356,16 @@ export const metadata: Metadata = {
 };
 
 export default function KapoamomPage() {
+  const productSchema = getProductSchema();
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "หน้าแรก", item: "/" },
+    { name: "ซอสผัดกะเพรา kapoamom", item: "/kapoamom" },
+  ]);
+
   return (
     <div className="flex min-h-screen flex-col bg-[#FFFDF9] text-[#4A3728]">
+      <JsonLd data={productSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <Navigation />
 
       <main className="flex-grow pt-24">
@@ -1380,16 +1393,6 @@ export default function KapoamomPage() {
                   <Button
                     className="h-16 w-full rounded-2xl bg-[#E85D04] px-10 text-lg font-black text-white shadow-xl shadow-[#E85D04]/20 hover:bg-[#D05403] sm:w-auto"
                     asChild
-                  >
-                    <Link href="#order">
-                      <ShoppingBag className="mr-2 h-5 w-5" /> สั่งซื้อเลย (เร็วๆ นี้)
-                    </Link>
-                  </Button>
-
-                  {/* AEMDEVWEB STRATEGIC PARTNER INFO */}
-                  <div className="flex items-center gap-3 rounded-2xl border border-[#E85D04]/10 bg-white/50 p-4 shadow-sm backdrop-blur-sm">
-                    <Shield className="h-5 w-5 text-[#E85D04]" />
-                    <div className="text-left leading-none">
 ```
 
 ### File: app/layout.tsx
@@ -1455,45 +1458,30 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+import { getRestaurantSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/lib/seo/json-ld";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": siteConfig.identity.name,
-    "image": [`${siteConfig.identity.url}${siteConfig.identity.ogImage}`],
-    "description": siteConfig.identity.description,
-    "url": siteConfig.identity.url,
-    "telephone": siteConfig.contact.phone,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "91/1 ถนนมหาดไทยบำรุง ต.หนองหลวง",
-      "addressLocality": "เมืองตาก",
-      "addressRegion": "ตาก",
-      "postalCode": "63000",
-      "addressCountry": "TH"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 16.883,
-      "longitude": 99.123
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "10:30",
-      "closes": "21:00"
-    },
-    "servesCuisine": "Thai Noodle",
-    "priceRange": "฿",
-    "founder": {
-      "@type": "Person",
-      "name": "เฮียเนก (คุณชายบะหมี่)"
-    },
-    "author": {
+  const restaurantSchema = getRestaurantSchema();
+
+  return (
+    <html lang="th" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <JsonLd data={restaurantSchema} />
+      </head>
+      <body className="font-sans antialiased">
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  );
+}
 ```
 
 ### File: app/loading.tsx
@@ -1551,6 +1539,8 @@ import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import servicesData from "@/data/services.json";
+import { getBreadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/lib/seo/json-ld";
 
 interface MenuItem {
   id: number;
@@ -1575,9 +1565,14 @@ export const metadata: Metadata = {
 
 export default function MenuPage() {
   const categories = servicesData.categories as unknown as MenuCategory[];
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "หน้าแรก", item: "/" },
+    { name: "เมนูอิ่มจุใจ", item: "/menu" },
+  ]);
 
   return (
     <div className="flex-min-h-screen bg-warm-cream flex flex-col">
+      <JsonLd data={breadcrumbSchema} />
       <Navigation />
 
       <main className="flex-grow pt-24 pb-20">
@@ -1635,13 +1630,6 @@ export default function MenuPage() {
                     </CardContent>
                   </Card>
                 ))}
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </main>
-
-      <FooterSection />
 ```
 
 ### File: app/not-found.tsx
@@ -6919,6 +6907,133 @@ export const getSiteConfig = cache(async () => {
 export const getFeaturedBlogs = cache(async (limit = 3): Promise<BlogEntry[]> => {
   return blogRegistry.slice(0, limit);
 });
+```
+
+### File: lib/seo/json-ld.tsx
+```typescript
+import React from "react";
+
+/**
+ * @file lib/seo/json-ld.tsx
+ * @description Safe JSON-LD injector component for Next.js 16.
+ */
+
+interface JsonLdProps {
+  data: Record<string, any>;
+}
+
+export function JsonLd({ data }: JsonLdProps) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+```
+
+### File: lib/seo/schema.ts
+```typescript
+import { siteConfig } from "@/constants/site-config";
+import { BlogEntry } from "@/constants/blog-registry";
+
+/**
+ * @file lib/seo/schema.ts
+ * @description Advanced Schema.org generators for high-level SEO.
+ * Implements international standards for LocalBusiness, Restaurant, and Digital Heritage.
+ */
+
+// 1. Restaurant & Local Business Schema
+export function getRestaurantSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "@id": `${siteConfig.identity.url}/#restaurant`,
+    "name": siteConfig.identity.name,
+    "alternateName": siteConfig.identity.fullName,
+    "image": [`${siteConfig.identity.url}${siteConfig.identity.ogImage}`],
+    "description": siteConfig.identity.description,
+    "url": siteConfig.identity.url,
+    "telephone": siteConfig.contact.phone,
+    "priceRange": "฿",
+    "servesCuisine": "Thai Noodle, Street Food",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": siteConfig.contact.address,
+      "addressLocality": "เมืองตาก",
+      "addressRegion": "ตาก",
+      "postalCode": "63000",
+      "addressCountry": "TH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 16.8833,
+      "longitude": 99.1233
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "10:30",
+        "closes": "21:00"
+      }
+    ],
+    "hasMenu": `${siteConfig.identity.url}/menu`,
+    "founder": {
+      "@type": "Person",
+      "name": "เฮียเนก",
+      "jobTitle": "Head Chef & Founder"
+    },
+    "knowsAbout": ["Traditional Thai Noodle", "Egg Noodle 98%", "Charcoal Grilled Red Pork"],
+    "maintainer": {
+      "@type": "Organization",
+      "name": "AEMDEVWEB",
+      "url": "https://www.aemdevweb.com"
+    }
+  };
+}
+
+// 2. Breadcrumb Schema (For Google Search Results Path)
+export function getBreadcrumbSchema(items: { name: string; item: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": `${siteConfig.identity.url}${item.item}`
+    }))
+  };
+}
+
+// 3. Blog Posting Schema (For News/Articles)
+export function getBlogPostingSchema(blog: BlogEntry) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": blog.title,
+    "description": blog.excerpt,
+    "image": [`${siteConfig.identity.url}/images/${blog.image}`],
+    "datePublished": blog.date,
+    "author": {
+      "@type": "Organization",
+      "name": siteConfig.identity.name,
+      "url": siteConfig.identity.url
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AEMDEVWEB",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteConfig.identity.url}/images/aemdevweb-logo.svg`
+      }
+    }
+  };
+}
+
+// 4. Product Schema (For kapoamom Sauce)
+export function getProductSchema() {
 ```
 
 ### File: lib/utils.ts

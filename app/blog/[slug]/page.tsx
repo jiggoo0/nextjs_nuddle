@@ -9,6 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronLeft, User, Clock, BarChart3, Zap, CheckCircle2, Cpu } from "lucide-react";
+import { getBlogPostingSchema, getBreadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/lib/seo/json-ld";
 
 interface BlogPageProps {
   params: Promise<{ slug: string }>;
@@ -62,8 +64,17 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
     loading: () => <div className="bg-muted h-96 animate-pulse rounded-[3rem]" />,
   });
 
+  const blogSchema = getBlogPostingSchema(blog);
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "หน้าแรก", item: "/" },
+    { name: "คลังความรู้", item: "/blog" },
+    { name: blog.title, item: `/blog/${slug}` },
+  ]);
+
   return (
     <div className="bg-background text-foreground flex min-h-screen flex-col">
+      <JsonLd data={blogSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <Navigation />
 
       <main className="flex-grow pt-32 pb-20">

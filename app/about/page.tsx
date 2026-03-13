@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Quote, Star, ShieldCheck, GraduationCap, Coins } from "lucide-react";
 import Image from "next/image";
 import { siteConfig } from "@/constants/site-config";
+import { getBreadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
   title: `เรื่องราว 9 ปีของเฮียเนก | ${siteConfig.identity.name}`,
@@ -14,8 +16,14 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "หน้าแรก", item: "/" },
+    { name: "เรื่องราว 9 ปี", item: "/about" },
+  ]);
+
   return (
     <div className="bg-background text-foreground flex min-h-screen flex-col">
+      <JsonLd data={breadcrumbSchema} />
       <Navigation />
 
       <main className="flex-grow pt-24 pb-20">

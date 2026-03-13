@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import servicesData from "@/data/services.json";
+import { getBreadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/lib/seo/json-ld";
 
 interface MenuItem {
   id: number;
@@ -31,9 +33,14 @@ export const metadata: Metadata = {
 
 export default function MenuPage() {
   const categories = servicesData.categories as unknown as MenuCategory[];
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "หน้าแรก", item: "/" },
+    { name: "เมนูอิ่มจุใจ", item: "/menu" },
+  ]);
 
   return (
     <div className="flex-min-h-screen bg-warm-cream flex flex-col">
+      <JsonLd data={breadcrumbSchema} />
       <Navigation />
 
       <main className="flex-grow pt-24 pb-20">
