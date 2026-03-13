@@ -22,7 +22,7 @@ export const blogRegistry: BlogEntry[] = [
     date: "2026-03-13",
     excerpt: "รวมรายการเมนูทั้งหมดของร้าน ช.สหชัย ทั้งสายเส้นและสายข้าว พร้อมราคาที่เป็นธรรมและปริมาณที่จุใจ",
     category: "Menu",
-    image: "menu-board-rice.jpg"
+    image: "hero-noodle.webp"
   },
   {
     slug: "catering-bpp-tak",
@@ -62,7 +62,7 @@ export const blogRegistry: BlogEntry[] = [
     date: "2026-03-01",
     excerpt: "เจาะลึกวิธีการสั่งเมนูเด็ดและสูตรผสมความอร่อยที่ทำให้บะหมี่ไข่ 98% ของเรามัดใจลูกค้ามาอย่างยาวนาน",
     category: "Guide",
-    image: "noodle-making.webp"
+    image: "master-hands.webp"
   },
   {
     slug: "one-day-trip-tak",
