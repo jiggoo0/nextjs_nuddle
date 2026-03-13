@@ -9,6 +9,9 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   // 🚀 FIXED: Advanced Webpack Configuration to handle Tailwind 4 CSS resolution issues in local environment
   webpack: (config) => {

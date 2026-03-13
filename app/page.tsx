@@ -42,6 +42,8 @@ export default function Home() {
                     alt="ความเหนียวหนึบของเส้นบะหมี่ไข่ 98%"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={80}
                   />
                 </div>
                 <div className="bg-primary absolute -right-10 -bottom-10 z-20 max-w-[240px] -rotate-3 rounded-[2.5rem] p-8 text-white shadow-2xl transition-transform duration-500 hover:rotate-0">
@@ -148,6 +150,7 @@ export default function Home() {
                       alt={item.alt}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-10 text-left opacity-0 transition-all duration-500 group-hover:opacity-100">
                       <div className="mb-2 translate-y-4 text-2xl font-black text-white transition-transform duration-500 group-hover:translate-y-0">
