@@ -26,10 +26,10 @@ export function HeroSection() {
 
       <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.01, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="bg-primary/5 border-primary/10 mb-8 inline-flex items-center gap-2 rounded-full border px-6 py-2"
+          transition={{ duration: 0.5 }}
+          className="bg-primary/10 border-primary/20 mb-8 inline-flex items-center gap-2 rounded-full border px-6 py-2"
         >
           <Heart className="text-primary h-4 w-4 animate-pulse" />
           <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase">
@@ -38,9 +38,9 @@ export function HeroSection() {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0.01, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="text-foreground mb-8 text-5xl leading-[0.95] font-black tracking-tighter md:text-8xl"
         >
           {hero.headlineLine1} <br />
@@ -48,22 +48,23 @@ export function HeroSection() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.01, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="text-muted-foreground mx-auto mb-12 max-w-2xl text-xl leading-relaxed font-medium md:text-2xl"
         >
           {hero.description}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0.01, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-col items-center justify-center gap-6 sm:flex-row"
         >
           <a
             href="#menu"
+            aria-label="ดูเมนูความอร่อย ช.สหชัย"
             className="group bg-primary text-primary-foreground shadow-primary/30 hover:bg-primary/90 relative inline-flex items-center justify-center gap-3 rounded-[2rem] px-10 py-5 text-lg font-bold shadow-2xl transition-all hover:-translate-y-1 active:scale-95"
           >
             <Utensils className="h-5 w-5 transition-transform group-hover:rotate-12" />
@@ -71,6 +72,7 @@ export function HeroSection() {
           </a>
           <a
             href="#contact"
+            aria-label="ดูพิกัดร้านและเวลาเปิดปิด"
             className="text-foreground hover:text-primary flex items-center gap-2 font-bold transition-colors"
           >
             เส้นทางมาร้าน <ChevronDown className="mt-1 h-4 w-4 animate-bounce" />

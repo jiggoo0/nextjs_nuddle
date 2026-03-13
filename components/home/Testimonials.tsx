@@ -34,12 +34,14 @@ export function ReviewCarousel() {
           <div className="flex gap-3">
             <button
               onClick={scrollPrev}
+              aria-label="รีวิวก่อนหน้า"
               className="border-primary/20 text-primary hover:bg-primary flex h-14 w-14 items-center justify-center rounded-full border bg-white shadow-lg transition-all hover:text-white active:scale-90"
             >
               <ChevronLeft className="h-6 w-6" />
             </button>
             <button
               onClick={scrollNext}
+              aria-label="รีวิวถัดไป"
               className="border-primary/20 text-primary hover:bg-primary flex h-14 w-14 items-center justify-center rounded-full border bg-white shadow-lg transition-all hover:text-white active:scale-90"
             >
               <ChevronRight className="h-6 w-6" />
@@ -55,37 +57,37 @@ export function ReviewCarousel() {
                 className="flex-[0_0_100%] pl-6 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
               >
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0.01, scale: 0.98 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  className="border-primary/5 group flex h-full flex-col justify-between rounded-[3rem] border bg-white p-10 shadow-xl transition-all duration-500 hover:-translate-y-2"
+                  className="border-primary/10 group flex h-full flex-col justify-between rounded-[3rem] border bg-white p-10 shadow-xl transition-all duration-500 hover:-translate-y-2"
                 >
                   <div>
                     <div className="mb-6 flex items-start justify-between">
-                      <div className="text-secondary flex gap-1">
+                      <div className="text-amber-500 flex gap-1">
                         {[...Array(review.rating)].map((_, i) => (
                           <Star key={i} className="h-4 w-4 fill-current" />
                         ))}
                       </div>
-                      <Quote className="text-primary/5 h-8 w-8" />
+                      <Quote className="text-primary/10 h-8 w-8" />
                     </div>
-                    <p className="text-foreground mb-8 text-lg leading-relaxed font-medium italic">
+                    <p className="text-foreground mb-8 text-lg leading-relaxed font-bold italic">
                       "{review.comment}"
                     </p>
                   </div>
 
                   <div className="border-muted flex items-center gap-4 border-t pt-6">
-                    <div className="bg-primary/5 text-primary flex h-12 w-12 items-center justify-center rounded-2xl text-xl font-black">
+                    <div className="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-2xl text-xl font-black">
                       {review.avatarInitials}
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-foreground font-bold">{review.name}</span>
+                        <span className="text-foreground font-black">{review.name}</span>
                         {review.isVerified && (
-                          <CheckCircle2 className="h-3.5 w-3.5 text-blue-500" />
+                          <CheckCircle2 className="h-3.5 w-3.5 text-blue-600" />
                         )}
                       </div>
-                      <div className="text-muted-foreground flex items-center gap-1 text-[10px] font-bold tracking-widest uppercase">
+                      <div className="text-muted-foreground flex items-center gap-1 text-[10px] font-black tracking-widest uppercase">
                         <MapPin className="h-2.5 w-2.5" />
                         {review.location} • {review.date}
                       </div>

@@ -209,12 +209,12 @@ export default function Home() {
                   </div>
 
                   <div className="group flex items-start gap-6">
-                    <div className="bg-primary/5 text-primary group-hover:bg-primary flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-center transition-colors group-hover:text-white lg:text-left">
+                    <div className="bg-primary/10 text-primary group-hover:bg-primary flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl transition-colors group-hover:text-white">
                       <Clock className="h-7 w-7" />
                     </div>
                     <div>
-                      <h4 className="mb-2 text-left text-xl font-bold">เวลาเปิดให้บริการ</h4>
-                      <p className="text-muted-foreground text-left font-medium">
+                      <h3 className="mb-2 text-left text-xl font-black">เวลาเปิดให้บริการ</h3>
+                      <p className="text-foreground text-left font-bold">
                         {contact.businessHours}
                       </p>
                     </div>
@@ -234,6 +234,7 @@ export default function Home() {
 
               <div className="border-muted relative h-[400px] w-full overflow-hidden rounded-[3.5rem] border-[12px] shadow-2xl md:h-[450px] lg:w-1/2">
                 <iframe
+                  title="แผนที่ร้าน ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3810.123!2d99.123!3d16.883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30dd962df324c00b%3A0xc0688820f4f9f476!2z4LiKLuC4quC4q-C4reC4quC4seC4p-C5gOC4geC4teC5ieC4p-C4m-C4ueC4reC4reC4oeC4seC4p-C5geC4lOC4hw!5e0!3m2!1sth!2sth!4v1710000000000!5m2!1sth!2sth"
                   width="100%"
                   height="100%"
