@@ -17,10 +17,33 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { siteConfig } from "@/constants/site-config";
 
 export const metadata: Metadata = {
   title: "kapoamom | ซอสผัดกะเพราฝีมือแม่ อร่อยเหมือนแม่ผัดให้แน่นอน",
-  description: "ซอสผัดกะเพราสูตรลับระดับตำนาน 9 ปี จากร้าน ช.สหชัย สู่แบรนด์ kapoamom รสชาติจัดจ้าน หอมกลิ่นเตาถ่าน พัฒนาการตลาดโดย AEMDEVWEB",
+  description: "สัมผัสซอสผัดกะเพราสูตรลับระดับตำนาน 9 ปี จากร้าน ช.สหชัย สู่แบรนด์ kapoamom รสชาติจัดจ้าน หอมกลิ่นเตาถ่าน พัฒนาการตลาดโดย AEMDEVWEB",
+  openGraph: {
+    title: "kapoamom | ซอสผัดกะเพราฝีมือแม่ ที่สุดของความจัดจ้าน",
+    description: "อร่อยเหมือนกะเพราแม่ที่ผัดให้แน่นอน สูตรลับ 9 ปีที่ส่งตรงจากหน้าเตา ช.สหชัย ถึงบ้านคุณ",
+    url: `${siteConfig.identity.url}/kapoamom`,
+    siteName: "kapoamom by ช.สหชัย",
+    images: [
+      {
+        url: "/images/kapoamom-sauce.webp",
+        width: 1200,
+        height: 630,
+        alt: "ซอสผัดกะเพรา kapoamom ฝีมือแม่",
+      },
+    ],
+    locale: "th_TH",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "kapoamom | ซอสผัดกะเพราฝีมือแม่",
+    description: "ไม่ต้องปรุงเพิ่ม แค่เทแล้วผัด ก็อร่อยระดับตำนาน ช.สหชัย",
+    images: ["/images/kapoamom-sauce.webp"],
+  },
 };
 
 export default function KapoamomPage() {

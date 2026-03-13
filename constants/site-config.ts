@@ -113,11 +113,11 @@ export const galleryContent = {
   title: "ความสุขในทุกๆ คำ",
   items: [
     { src: "/images/hero-noodle.webp", alt: "บะหมี่เกี๊ยวปูหมูแดง ช.สหชัย", title: "บะหมี่ไข่ 98% ซิกเนเจอร์" },
-    { src: "/images/noodle-special.webp", alt: "เกี๊ยวปูทำมือ ช.สหชัย", title: "งานฝีมือคุณภาพ" },
+    { src: "/images/signature-98-noodle.webp", alt: "เกี๊ยวปูทำมือ ช.สหชัย", title: "งานฝีมือคุณภาพ" },
     { src: "/images/blog-noodle-1.webp", alt: "บะหมี่ไข่ทำเองสดใหม่", title: "เส้นบะหมี่เหนียวหนึบ" },
     { src: "/images/blog-noodle-2.webp", alt: "หมูแดงย่างหอมๆ", title: "ความใส่ใจในเครื่องปรุง" },
     { src: "/images/blog-noodle-3.webp", alt: "บรรยากาศความใจดี", title: "รอยยิ้มจากเจ๊ตั๊ก" },
-    { src: "/images/blog-noodle-4.webp", alt: "เฮียเนกดูแลทุกชาม", title: "มาตรฐาน 9 ปี" },
+    { src: "/images/master-hands.webp", alt: "เฮียเนกดูแลทุกชาม", title: "มาตรฐาน 9 ปี" },
   ]
 };
 

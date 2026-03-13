@@ -3,7 +3,7 @@ import { Navigation } from "@/components/layout/Header";
 import { FooterSection } from "@/components/layout/Footer";
 import { AnimatedSection } from "@/components/animated-section";
 import { Badge } from "@/components/ui/badge";
-import { Quote, Heart, Star, ShieldCheck, GraduationCap, Coins } from "lucide-react";
+import { Quote, Star, ShieldCheck, GraduationCap, Coins } from "lucide-react";
 import Image from "next/image";
 import { siteConfig } from "@/constants/site-config";
 

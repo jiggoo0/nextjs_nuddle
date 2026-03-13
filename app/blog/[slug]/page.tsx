@@ -1,4 +1,3 @@
-import { siteConfig } from "@/constants/site-config";
 import { blogRegistry } from "@/constants/blog-registry";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
@@ -12,7 +11,6 @@ import Link from "next/link";
 import { 
   ChevronLeft, 
   User, 
-  Tag, 
   Clock, 
   BarChart3, 
   Zap, 

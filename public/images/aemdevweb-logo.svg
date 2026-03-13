@@ -1,0 +1,30 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Glow/Background -->
+  <circle cx="100" cy="100" r="95" fill="url(#paint0_linear)" fill-opacity="0.05"/>
+  <circle cx="100" cy="100" r="95" stroke="#1E3A8A" stroke-width="2" stroke-dasharray="10 5" opacity="0.2"/>
+
+  <!-- Main Symbol: Stylized 'A' + Circuit -->
+  <path d="M100 40L150 160H130L100 85L70 160H50L100 40Z" fill="#1E3A8A"/>
+  <path d="M100 40L150 160H130L100 85L70 160H50L100 40Z" fill="url(#paint1_linear)" fill-opacity="0.8"/>
+  
+  <!-- Digital Connection Dots -->
+  <circle cx="100" cy="40" r="6" fill="#E85D04"/>
+  <circle cx="50" cy="160" r="6" fill="#1E3A8A"/>
+  <circle cx="150" cy="160" r="6" fill="#1E3A8A"/>
+  <circle cx="100" cy="85" r="4" fill="#E85D04"/>
+
+  <!-- Circuit Lines -->
+  <path d="M100 40V70M100 85L120 110M100 85L80 110" stroke="#E85D04" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Brand Text (Optional inside SVG) -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="100" y1="5" x2="100" y2="195" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E3A8A"/>
+      <stop offset="1" stop-color="#E85D04"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear" x1="100" y1="40" x2="100" y2="160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E3A8A"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+</svg>

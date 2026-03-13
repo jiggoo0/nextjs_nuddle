@@ -1,31 +1,32 @@
 # 🏁 nextjs_nuddle PROJECT STATE
 
-> **Phase:** Migration (Static HTML to Next.js 16)
-> **Goal:** Transform the noodle shop business website "ช.สหชัย เกี๊ยวปูหมูแดง" into a modern React application.
+> **Phase:** Stability & Enhancement (Core Migration Complete)
+> **Goal:** Develop a high-performance, modern web application for "ช.สหชัย เกี๊ยวปูหมูแดง".
 
 ---
 
 ## 🛠️ TECH STACK
-- **Framework:** Next.js 16.0.0
-- **UI:** React 19, Tailwind CSS 4, Lucide React, Framer Motion
+- **Framework:** Next.js 16.1.6 (Latest Webpack Engine)
+- **UI:** React 19, Tailwind CSS 4.1.9, Framer Motion
 - **Components:** Shadcn UI (Radix UI)
 - **State Management:** React Hook Form + Zod
-- **Infrastructure:** Vercel Analytics
+- **Infrastructure:** Vercel Analytics + LINE Bot SDK (Webhook)
 
 ---
 
 ## 📋 CURRENT STATUS
-1.  **Core Assets:** Static HTML, CSS, and JS from the previous version are present in the root and `assets/` folder.
-2.  **New Structure:** Next.js `app/` directory and `components(1)/` (containing TSX components) are being initialized.
-3.  **GEMINI System:** Root `.gemini/` system is fully configured according to standards.
+1.  ✅ **Build Status:** 100% Healthy (Production build generated 19/19 pages).
+2.  ✅ **Critical Fixes:** Resolved Metadata ReferenceErrors and LINE Webhook Linting issues.
+3.  ✅ **Structure:** App Router structure is solid with SSOT in `constants/site-config.ts`.
+4.  ✅ **Assets:** Images and MDX blogs are correctly linked and rendering.
 
 ---
 
 ## 🚀 NEXT STEPS
-- [ ] Implement the Home page in `app/page.tsx` using existing design from `index.html`.
-- [ ] Migrate components from `components/` (.html) to `components(1)/` (.tsx).
-- [ ] Set up layout and global styles using Tailwind CSS 4.
-- [ ] Connect data from `data/*.json` to the Next.js pages.
+- [ ] **SEO Optimization:** Finalize metadata for all blog posts and dynamic pages.
+- [ ] **Kapoamom Launch:** Implement the ordering system/landing page enhancements for the sauce brand.
+- [ ] **Performance:** Optimize image loading and layout shifts (CLS) on mobile.
+- [ ] **LINE Bot:** Extend webhook capabilities for automated order inquiries.
 
 ---
-*Updated: Friday, March 13, 2026*
+*Updated: Friday, March 13, 2026 (AI Setup Complete)*
