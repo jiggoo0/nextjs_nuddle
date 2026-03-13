@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, ArrowRight, UtensilsCrossed } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function ProductTeaser() {
   return (
@@ -69,9 +70,10 @@ export function ProductTeaser() {
                   <span className="font-black text-sm uppercase tracking-widest text-primary">เร็วๆ นี้</span>
                 </div>
                 <div className="w-px h-4 bg-border hidden sm:block" />
-                <button className="flex items-center gap-2 text-muted-foreground font-black uppercase tracking-widest text-xs hover:text-primary transition-all group/btn">
-                  ติดตามความเคลื่อนไหว <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                </button>
+                {/* UPDATED LINK TO PRODUCT PAGE */}
+                <Link href="/kapoamom" className="flex items-center gap-2 text-muted-foreground font-black uppercase tracking-widest text-xs hover:text-primary transition-all group/btn">
+                  เข้าชมหน้าผลิตภัณฑ์ <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                </Link>
               </div>
             </div>
           </div>

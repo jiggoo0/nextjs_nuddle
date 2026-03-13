@@ -12,14 +12,15 @@ import {
   ShieldCheck, 
   Leaf, 
   Clock,
-  ArrowRight
+  ArrowRight,
+  Shield
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "kapoamom | ซอสผัดกะเพราฝีมือแม่ อร่อยเหมือนแม่ผัดให้แน่นอน",
-  description: "ซอสผัดกะเพราสูตรลับระดับตำนาน 9 ปี จากร้าน ช.สหชัย สู่แบรนด์ kapoamom รสชาติจัดจ้าน หอมกลิ่นเตาถ่าน ทำเองได้ง่ายๆ ที่บ้าน",
+  description: "ซอสผัดกะเพราสูตรลับระดับตำนาน 9 ปี จากร้าน ช.สหชัย สู่แบรนด์ kapoamom รสชาติจัดจ้าน หอมกลิ่นเตาถ่าน พัฒนาการตลาดโดย AEMDEVWEB",
 };
 
 export default function KapoamomPage() {
@@ -49,9 +50,15 @@ export default function KapoamomPage() {
                   <Button className="bg-[#E85D04] hover:bg-[#D05403] text-white rounded-2xl h-16 px-10 text-lg font-black shadow-xl shadow-[#E85D04]/20 w-full sm:w-auto" asChild>
                     <Link href="#order"><ShoppingBag className="mr-2 w-5 h-5" /> สั่งซื้อเลย (เร็วๆ นี้)</Link>
                   </Button>
-                  <Button variant="outline" className="border-[#4A3728]/20 text-[#4A3728] rounded-2xl h-16 px-10 text-lg font-bold w-full sm:w-auto hover:bg-white" asChild>
-                    <Link href="#story">เรื่องราวของแบรนด์</Link>
-                  </Button>
+                  
+                  {/* AEMDEVWEB STRATEGIC PARTNER INFO */}
+                  <div className="flex items-center gap-3 p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-[#E85D04]/10 shadow-sm">
+                    <Shield className="w-5 h-5 text-[#E85D04]" />
+                    <div className="text-left leading-none">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-[#E85D04] mb-1">Managed by</p>
+                      <p className="text-sm font-black italic">AEMDEVWEB</p>
+                    </div>
+                  </div>
                 </div>
               </AnimatedSection>
 
@@ -70,19 +77,46 @@ export default function KapoamomPage() {
                     <ShieldCheck className="w-8 h-8 text-[#E85D04]" />
                     <span className="font-black text-lg">มาตรฐาน ช.สหชัย</span>
                   </div>
-                  <p className="text-sm text-[#6B5B4B] font-medium italic">ส่งต่อความอร่อยจากรุ่นสู่รุ่น</p>
+                  <p className="text-sm text-[#6B5B4B] font-medium italic">ส่งต่อความอร่อยโดย AEMDEVWEB</p>
                 </div>
               </AnimatedSection>
             </div>
           </div>
         </section>
 
+        {/* STRATEGIC BRANDING SECTION (WOW FACTOR) */}
+        <section className="py-16 bg-white border-y border-[#E85D04]/5 overflow-hidden">
+          <div className="container mx-auto px-6">
+            <AnimatedSection className="max-w-5xl mx-auto">
+              <div className="bg-[#FFFDF9] p-10 md:p-16 rounded-[4rem] border border-[#E85D04]/10 shadow-sm relative group overflow-hidden">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-[#E85D04]/5 rounded-full -mr-48 -mt-48 group-hover:scale-110 transition-transform duration-1000" />
+                <div className="relative z-10 flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
+                  <div className="w-24 h-24 shrink-0 rounded-3xl bg-primary text-white flex items-center justify-center shadow-2xl shadow-primary/20">
+                    <Shield className="w-12 h-12" />
+                  </div>
+                  <div className="space-y-4">
+                    <Badge className="bg-primary/10 text-primary border-none font-black uppercase tracking-[0.2em] text-[10px]">Strategic Business Support</Badge>
+                    <h3 className="text-3xl font-black tracking-tight leading-tight text-[#4A3728]">
+                      เบื้องหลังความสำเร็จของแบรนด์ <br className="hidden md:block" />
+                      คือความเชี่ยวชาญจาก <span className="text-primary italic font-serif uppercase text-2xl">AEMDEVWEB</span>
+                    </h3>
+                    <p className="text-[#6B5B4B] leading-relaxed font-medium text-lg">
+                      ผลิตภัณฑ์แบรนด์ <strong>kapoamom</strong> ได้รับการวางรากฐานทางธุรกิจ การสร้างตัวตนดิจิทัล 
+                      และการตลาดออนไลน์ทุกขั้นตอนโดยทีมงาน <strong>AEMDEVWEB</strong> เพื่อยกระดับความอร่อยจากหน้าเตาสู่มาตรฐานสากลที่พร้อมส่งต่อความสุขให้ทุกครอบครัว
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+
         {/* FEATURES SECTION */}
-        <section className="py-24 bg-white border-y border-[#4A3728]/5">
+        <section className="py-24 bg-[#FFFDF9]">
           <div className="container mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#4A3728]">ทำไมต้องซอสกะเพรา <span className="text-[#E85D04]">kapoamom</span>?</h2>
-              <p className="text-[#6B5B4B] text-lg font-medium">เราใส่ใจในทุกรายละเอียด เพื่อให้คุณได้สัมผัสรสชาติที่ดีที่สุดเหมือนทานที่ร้าน</p>
+              <p className="text-[#6B5B4B] text-lg font-medium">คัดสรรคุณภาพและนวัตกรรมการผลิตภายใต้การดูแลของทีมผู้เชี่ยวชาญ</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-10">
@@ -100,10 +134,10 @@ export default function KapoamomPage() {
                 { 
                   icon: Clock, 
                   title: "ประหยัดเวลา", 
-                  desc: "ผัดเสร็จภายใน 2 นาที ไม่ต้องโขลกพริกกระเทียมให้วุ่นวาย" 
+                  desc: "ผัดเสร็จภายใน 2 นาที ไม่ต้องปรุงเพิ่ม อร่อยแน่นอน" 
                 }
               ].map((feature, idx) => (
-                <AnimatedSection key={idx} delay={idx * 0.1} className="bg-[#FFFDF9] p-10 rounded-[3rem] border border-[#4A3728]/5 shadow-sm hover:shadow-xl transition-all duration-500">
+                <AnimatedSection key={idx} delay={idx * 0.1} className="bg-white p-10 rounded-[3rem] border border-[#4A3728]/5 shadow-sm hover:shadow-xl transition-all duration-500">
                   <div className="w-14 h-14 rounded-2xl bg-[#E85D04]/10 text-[#E85D04] flex items-center justify-center mb-6">
                     <feature.icon className="w-7 h-7" />
                   </div>
@@ -116,7 +150,7 @@ export default function KapoamomPage() {
         </section>
 
         {/* STORY & USAGE SECTION */}
-        <section id="story" className="py-24 bg-[#FFFDF9]">
+        <section id="story" className="py-24 bg-white">
           <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
               <AnimatedSection className="relative order-2 lg:order-1">
@@ -134,8 +168,8 @@ export default function KapoamomPage() {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#E85D04]/10 text-[#E85D04] mb-2">
                   <Heart className="w-8 h-8" />
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black tracking-tighter">จากความตั้งใจของ <br /><span className="text-[#E85D04]">"แม่" สู่ขวดคุณ</span></h2>
-                <div className="space-y-6 text-lg text-[#6B5B4B] leading-relaxed font-medium">
+                <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-[#4A3728]">จากความตั้งใจของ <br /><span className="text-[#E85D04]">"แม่" สู่ขวดคุณ</span></h2>
+                <div className="space-y-6 text-lg text-[#6B5B4B] leading-relaxed font-medium text-left">
                   <p>
                     <strong>kapoamom</strong> เริ่มต้นจากความต้องการของเฮียเนกและเจ๊ตั๊ก ที่อยากให้ลูกค้าที่อยู่ไกลได้ทานรสชาติกะเพราที่จริงใจเหมือนที่เจ๊ตั๊กตั้งใจผัดให้ลูกๆ ทานที่บ้าน
                   </p>
@@ -169,7 +203,7 @@ export default function KapoamomPage() {
               </h2>
               <p className="text-xl text-white/80 font-medium">
                 ร่วมเป็นกลุ่มแรกที่ได้ลิ้มลองความจัดจ้านของซอสกะเพรา kapoamom <br className="hidden md:block" />
-                เรากำลังเร่งเตรียมความพร้อมเพื่อส่งต่อความอร่อยถึงมือคุณ
+                เรากำลังเร่งเตรียมความพร้อมภายใต้การดูแลของ AEMDEVWEB
               </p>
               <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                 <Link href="/contact" className="inline-flex items-center gap-3 bg-white text-[#E85D04] px-12 py-5 rounded-[2rem] text-xl font-black shadow-2xl hover:-translate-y-1 transition-all active:scale-95">
