@@ -11,6 +11,28 @@ export const metadata: Metadata = {
   authors: [{ name: "Alogkorn Yomkerd (AEMZA MAX)", url: "https://www.me.aemdevweb.com" }],
   creator: "AEMDEVWEB - www.aemdevweb.com",
   publisher: "นายอลงกรณ์ ยมเกิด (Alogkorn Yomkerd)",
+  openGraph: {
+    title: siteConfig.identity.name,
+    description: siteConfig.identity.description,
+    url: siteConfig.identity.url,
+    siteName: siteConfig.identity.name,
+    images: [
+      {
+        url: "/og-main.png",
+        width: 1200,
+        height: 630,
+        alt: siteConfig.identity.name,
+      },
+    ],
+    locale: "th_TH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.identity.name,
+    description: siteConfig.identity.description,
+    images: ["/og-main.png"],
+  },
   other: {
     "developer-contact": "https://www.aemdevweb.com",
     "developed-by": "AEMDEVWEB",

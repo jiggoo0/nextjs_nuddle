@@ -45,9 +45,10 @@ export default function AboutPage() {
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <AnimatedSection className="order-2 md:order-1 relative">
+                <div className="absolute -left-10 -bottom-10 w-64 h-64 bg-secondary/20 rounded-full blur-3xl opacity-50" />
                 <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white aspect-[4/5] rotate-2 hover:rotate-0 transition-transform duration-700">
                   <Image 
-                    src="/images/founders-warmth.webp" 
+                    src="/images/master-hands.webp" 
                     alt="เฮียเนก นายอเนก ยมเกิด" 
                     fill 
                     className="object-cover"
@@ -110,7 +111,7 @@ export default function AboutPage() {
               <AnimatedSection delay={0.2} className="relative">
                 <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white aspect-square -rotate-2 hover:rotate-0 transition-transform duration-700">
                   <Image 
-                    src="/images/noodle-making.webp" 
+                    src="/images/signature-98-noodle.webp" 
                     alt="การทำบะหมี่ไข่ 98%" 
                     fill 
                     className="object-cover"
@@ -129,7 +130,7 @@ export default function AboutPage() {
               <AnimatedSection className="order-2 md:order-1 relative">
                 <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white aspect-[4/3] rotate-1 hover:rotate-0 transition-transform duration-700">
                   <Image 
-                    src="/images/blog-noodle-3.webp" 
+                    src="/images/shop-atmosphere.webp" 
                     alt="ความสุขและความภูมิใจของครอบครัว" 
                     fill 
                     className="object-cover"
