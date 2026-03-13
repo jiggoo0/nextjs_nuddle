@@ -48,49 +48,70 @@ export async function POST(req: Request) {
 
           // --- LOGIC: NAVIGATION MENU (Keywords & Numbers) ---
           if (userMessage.includes("เมนู") || userMessage === "1") {
-            replyText = `[🍜 เมนูแนะนำ - ${siteConfig.identity.name}]
-1. ${siteConfig.pricing.tiers[1].name} (${siteConfig.pricing.tiers[1].price}) *ยอดนิยม*
+            replyText = `[🍴 เมนูแนะนำระดับตำนาน - ${siteConfig.identity.name}]
+
+🌟 เมนูขายดี (Must Try):
+1. ${siteConfig.pricing.tiers[1].name} (${siteConfig.pricing.tiers[1].price})
+   - บะหมี่ไข่ 98% นวดสดใหม่ทุกวัน
 2. ${siteConfig.pricing.tiers[0].name} (${siteConfig.pricing.tiers[0].price})
 3. ${siteConfig.pricing.tiers[2].name} (${siteConfig.pricing.tiers[2].price})
 
-🌐 ดูเมนูและรูปภาพทั้งหมด:
-${siteConfig.identity.url}/#menu`;
+🖼️ ดูภาพเมนูและราคาอย่างละเอียดได้ที่:
+${siteConfig.identity.url}/menu
+
+(ความอร่อยที่ส่งต่อมานานกว่า 9 ปี)`;
           } else if (
             userMessage.includes("พิกัด") ||
             userMessage.includes("ที่ตั้ง") ||
             userMessage === "2"
           ) {
-            replyText = `[📍 พิกัดและเวลาเปิดให้บริการ]
+            replyText = `[📍 ข้อมูลร้านและการเดินทาง]
+
 🏠 ที่ตั้ง: ${siteConfig.contact.address}
-⏰ เปิด: ${siteConfig.contact.businessHours}
+⏰ เวลาเปิด: ${siteConfig.contact.businessHours}
+🚫 หยุดทุกวันอาทิตย์
 
-🗺️ แผนที่ Google Maps:
-${siteConfig.contact.googleMaps}`;
+🗺️ แผนที่นำทาง (Google Maps):
+${siteConfig.contact.googleMaps}
+
+ยินดีต้อนรับทุกท่านครับ`;
           } else if (userMessage.includes("สั่ง") || userMessage === "3") {
-            replyText = `[☎️ สั่งอาหารล่วงหน้า]
-📞 โทร: ${siteConfig.contact.phone}
-(เฮียเนก หรือ เจ๊ตั๊ก ยินดีรับสายด้วยตัวเองครับ)
+            replyText = `[☎️ บริการสั่งล่วงหน้า / สอบถามคิว]
 
-⏱️ แนะนำ: สั่งล่วงหน้า 15-20 นาที เพื่อความรวดเร็วครับ`;
+เบอร์โทรสายตรง:
+📞 ${siteConfig.contact.phone} (เฮียเนก/เจ๊ตั๊ก)
+
+💡 หลักการสั่งให้อร่อยที่สุด:
+- สั่งล่วงหน้า 15-20 นาที
+- ระบุเส้น/ความต้องการพิเศษได้ทันที
+- รับอาหารแล้วแนะนำให้ทานร้อนๆ จะหนึบที่สุดครับ`;
           } else if (userMessage.includes("จัดเลี้ยง") || userMessage === "4") {
-            replyText = `[🤝 บริการจัดเลี้ยงนอกสถานที่]
-${siteConfig.catering.title}
+            replyText = `[🤝 บริการสำหรับธุรกิจและจัดเลี้ยง]
 
-📌 จุดเด่น: ${siteConfig.catering.highlights.join(", ")}
-📞 สอบถาม: ${siteConfig.contact.phone}`;
+✨ ${siteConfig.catering.title}
+เหมาะสำหรับงานบุญ, งานแต่ง, ประชุมสัมมนา
+
+📌 จุดเด่นบริการ: ${siteConfig.catering.highlights.join(", ")}
+
+🛍️ สนใจแบรนด์ซอสกะเพรา kapoamom:
+- สูตรลับ 9 ปี บรรจุขวด พร้อมส่งทั่วไทย
+- ดูรายละเอียด: ${siteConfig.identity.url}/kapoamom
+
+📞 ปรึกษาเรื่องจัดเลี้ยง/ธุรกิจ:
+โทร ${siteConfig.contact.phone}`;
           } else if (userMessage === "0") {
             const greeting =
               userId === ADMIN_USER_ID
                 ? "สวัสดีครับ นายท่านอลงกรณ์"
                 : `สวัสดีครับ ${siteConfig.identity.name} ยินดีให้บริการครับ`;
             replyText = `${greeting}
-ตำนานบะหมี่ไข่ 98% เมืองตาก 9 ปี
+ตำนานบะหมี่เมืองตาก 9 ปี
 
-กรุณาเลือกกดปุ่มเมนูที่ต้องการด้านล่างได้เลยครับ 👇`;
+กรุณาเลือกบริการที่ท่านต้องการครับ 👇`;
           } else {
-            replyText = `ขออภัยครับ ระบบไม่เข้าใจข้อความนี้ 🙏
+            replyText = `ขออภัยครับ ระบบไม่เข้าใจคำสั่งนี้ 🙏
 
-ท่านสามารถเลือกกดปุ่มด้านล่างเพื่อรับข้อมูลที่ต้องการได้ทันทีครับ 👇`;
+กรุณาเลือกกดปุ่มเมนูที่แถบด้านล่าง หรือเลือกจากตัวเลือกต่อไปนี้ครับ 👇`;
           }
 
           return client.replyMessage(event.replyToken, {
